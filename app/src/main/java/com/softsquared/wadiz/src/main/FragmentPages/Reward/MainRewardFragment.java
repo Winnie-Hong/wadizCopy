@@ -12,7 +12,7 @@ import com.google.android.material.tabs.TabLayout;
 import com.softsquared.wadiz.R;
 import com.softsquared.wadiz.src.main.MyPagerAdapter_to_Reward;
 
-public class MainReward extends Fragment {
+public class MainRewardFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         View view=inflater.inflate(R.layout.fragment_main_reward, container, false);
 

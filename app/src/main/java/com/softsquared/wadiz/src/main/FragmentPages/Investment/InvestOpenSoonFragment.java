@@ -9,8 +9,8 @@ import androidx.fragment.app.Fragment;
 
 import com.softsquared.wadiz.R;
 
-public class CulturalContents extends Fragment {
+public class InvestOpenSoonFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
-        return inflater.inflate(R.layout.fragment_cultural_content, container, false);
+        return inflater.inflate(R.layout.fragment_invest_opensoon, container, false);
     }
 }

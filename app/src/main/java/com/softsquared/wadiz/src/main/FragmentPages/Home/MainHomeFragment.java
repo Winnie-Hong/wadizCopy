@@ -12,7 +12,7 @@ import com.google.android.material.tabs.TabLayout;
 import com.softsquared.wadiz.R;
 import com.softsquared.wadiz.src.main.MyPagerAdapter_to_Home;
 
-public class MainHome extends Fragment {
+public class MainHomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_main_home, container, false);
 

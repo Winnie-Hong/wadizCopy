@@ -5,14 +5,11 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-<RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-    <ImageView
+
+    <pl.pzienowicz.autoscrollviewpager.AutoScrollViewPager
+        android:id="@+id/view_pager"
         android:layout_width="match_parent"
-        android:layout_height="180dp"
-        android:background="@android:color/darker_gray"/>
-</RelativeLayout>
+        android:layout_height="280dp" />
 
     <TextView
         android:id="@+id/리워드홈"
@@ -20,5 +17,7 @@
         android:layout_height="wrap_content"
         android:text="누구님, 이 펀딩 어때요?"
         android:textSize="20sp"/>
+
+
 
 </LinearLayout>

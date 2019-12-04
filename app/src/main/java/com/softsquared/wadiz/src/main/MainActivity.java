@@ -12,27 +12,23 @@ import com.softsquared.wadiz.src.BaseActivity;
 import com.softsquared.wadiz.src.main.interfaces.MainActivityView;
 
 public class MainActivity extends BaseActivity implements MainActivityView {
-    private ViewPager viewPager;
-    private TabLayout tabLayout;
+    private ViewPager mViewPager;
+    private TabLayout mTabLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //툴바 만들기
-//        Toolbar toolbar = findViewById(R.id.toolbar);
-//        toolbar.setLogo(R.drawable.img_barlogo);
-//        setSupportActionBar(toolbar);
-//        Actionbar actionbar = getSupportActionBar();
 
-        tabLayout = (TabLayout)findViewById(R.id.tablayout);
+
+        mTabLayout = (TabLayout)findViewById(R.id.tablayout);
 
         MyPagerAdapter adapter = new MyPagerAdapter(getSupportFragmentManager());
-        viewPager = (ViewPager)findViewById(R.id.pager);
-        viewPager.setAdapter(new MyPagerAdapter(getSupportFragmentManager()));
+        mViewPager = (ViewPager)findViewById(R.id.pager);
+        mViewPager.setAdapter(new MyPagerAdapter(getSupportFragmentManager()));
 
-        tabLayout.setupWithViewPager(viewPager);
+        mTabLayout.setupWithViewPager(mViewPager);
         setTabLayoutRes();
     }
 

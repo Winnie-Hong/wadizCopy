@@ -1,4 +1,4 @@
-package com.softsquared.wadiz.src.main.FragmentPages.Reward;
+package com.softsquared.wadiz.src.main.FragmentPages.Investment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,10 +9,8 @@ import androidx.fragment.app.Fragment;
 
 import com.softsquared.wadiz.R;
 
-public class RewardHome extends Fragment {
+public class InvestHomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
-        View view = inflater.inflate(R.layout.fragment_rewardhome, container, false);
-
-    return view;
+        return inflater.inflate(R.layout.fragment_investhome, container, false);
     }
 }

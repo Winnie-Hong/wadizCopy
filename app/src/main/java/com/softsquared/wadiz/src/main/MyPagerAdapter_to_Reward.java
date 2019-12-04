@@ -4,9 +4,9 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
-import com.softsquared.wadiz.src.main.FragmentPages.Reward.Global;
-import com.softsquared.wadiz.src.main.FragmentPages.Reward.OpenSoon;
-import com.softsquared.wadiz.src.main.FragmentPages.Reward.RewardHome;
+import com.softsquared.wadiz.src.main.FragmentPages.Reward.GlobalFragment;
+import com.softsquared.wadiz.src.main.FragmentPages.Reward.OpenSoonFragment;
+import com.softsquared.wadiz.src.main.FragmentPages.Reward.RwardHome.RewardHomeFragment;
 
 public class MyPagerAdapter_to_Reward extends FragmentPagerAdapter {
     int mNumOfPages;
@@ -18,13 +18,13 @@ public class MyPagerAdapter_to_Reward extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        switch (position) {
+        switch (position) { ///
             case 0:
-                return new RewardHome();
+                return new RewardHomeFragment();
             case 1:
-                return new OpenSoon();
+                return new OpenSoonFragment();
             case 2:
-                return new Global();
+                return new GlobalFragment();
             default:
                 return null;
         }

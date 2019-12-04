@@ -4,13 +4,13 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
-import com.softsquared.wadiz.src.main.FragmentPages.Investment.Bond;
-import com.softsquared.wadiz.src.main.FragmentPages.Investment.CulturalContents;
-import com.softsquared.wadiz.src.main.FragmentPages.Investment.InvestHome;
-import com.softsquared.wadiz.src.main.FragmentPages.Investment.InvestOpenSoon;
-import com.softsquared.wadiz.src.main.FragmentPages.Investment.Startup;
-import com.softsquared.wadiz.src.main.FragmentPages.Investment.Survey;
-import com.softsquared.wadiz.src.main.FragmentPages.Investment.W9;
+import com.softsquared.wadiz.src.main.FragmentPages.Investment.BondFragment;
+import com.softsquared.wadiz.src.main.FragmentPages.Investment.CulturalContentsFragment;
+import com.softsquared.wadiz.src.main.FragmentPages.Investment.InvestHomeFragment;
+import com.softsquared.wadiz.src.main.FragmentPages.Investment.InvestOpenSoonFragment;
+import com.softsquared.wadiz.src.main.FragmentPages.Investment.StartupFragment;
+import com.softsquared.wadiz.src.main.FragmentPages.Investment.SurveyFragment;
+import com.softsquared.wadiz.src.main.FragmentPages.Investment.WFragment;
 
 public class MyPagerAdapter_to_Investment extends FragmentPagerAdapter {
     int mNumOfPages;
@@ -24,19 +24,19 @@ public class MyPagerAdapter_to_Investment extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         switch (position) {
             case 0:
-                return new Survey();
+                return new SurveyFragment();
             case 1:
-                return new InvestHome();
+                return new InvestHomeFragment();
             case 2:
-                return new InvestOpenSoon();
+                return new InvestOpenSoonFragment();
             case 3:
-                return new Startup();
+                return new StartupFragment();
             case 4:
-                return new CulturalContents();
+                return new CulturalContentsFragment();
             case 5:
-                return new Bond();
+                return new BondFragment();
             case 6:
-                return new W9();
+                return new WFragment();
             default:
                 return null;
         }

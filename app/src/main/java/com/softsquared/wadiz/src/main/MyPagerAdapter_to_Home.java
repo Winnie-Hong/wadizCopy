@@ -4,11 +4,11 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
-import com.softsquared.wadiz.src.main.FragmentPages.Home.EarlyBird;
-import com.softsquared.wadiz.src.main.FragmentPages.Home.Exhibition;
-import com.softsquared.wadiz.src.main.FragmentPages.Home.Maker;
-import com.softsquared.wadiz.src.main.FragmentPages.Home.Recommend;
-import com.softsquared.wadiz.src.main.FragmentPages.Home.Trend;
+import com.softsquared.wadiz.src.main.FragmentPages.Home.EarlyBirdFragment;
+import com.softsquared.wadiz.src.main.FragmentPages.Home.ExhibitionFragment;
+import com.softsquared.wadiz.src.main.FragmentPages.Home.MakerFragment;
+import com.softsquared.wadiz.src.main.FragmentPages.Home.RecommendFragment;
+import com.softsquared.wadiz.src.main.FragmentPages.Home.TrendFragment;
 
 public class MyPagerAdapter_to_Home extends FragmentPagerAdapter {
     int mNumOfPages;
@@ -22,15 +22,15 @@ public class MyPagerAdapter_to_Home extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         switch (position) {
             case 0:
-                return new Recommend();
+                return new RecommendFragment();
             case 1:
-                return new EarlyBird();
+                return new EarlyBirdFragment();
             case 2:
-                return new Exhibition();
+                return new ExhibitionFragment();
             case 3:
-                return new Trend();
+                return new TrendFragment();
             case 4:
-                return new Maker();
+                return new MakerFragment();
             default:
                 return null;
         }

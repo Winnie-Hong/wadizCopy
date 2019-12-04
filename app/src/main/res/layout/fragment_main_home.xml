@@ -7,12 +7,11 @@
     tools:context=".src.main.MainActivity">
 
 
-
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/pager_home"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/colorPrimaryDark">
+        android:background="#ffffff">
 
     </androidx.viewpager.widget.ViewPager>
 

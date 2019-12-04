@@ -4,11 +4,11 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
-import com.softsquared.wadiz.src.main.FragmentPages.Home.MainHome;
-import com.softsquared.wadiz.src.main.FragmentPages.Investment.MainInvestment;
-import com.softsquared.wadiz.src.main.FragmentPages.MainMoreInfo;
-import com.softsquared.wadiz.src.main.FragmentPages.MainMyPage;
-import com.softsquared.wadiz.src.main.FragmentPages.Reward.MainReward;
+import com.softsquared.wadiz.src.main.FragmentPages.Home.MainHomeFragment;
+import com.softsquared.wadiz.src.main.FragmentPages.Investment.MainInvestmentFragment;
+import com.softsquared.wadiz.src.main.FragmentPages.MainMoreInfoFragment;
+import com.softsquared.wadiz.src.main.FragmentPages.MainMyPageFragment;
+import com.softsquared.wadiz.src.main.FragmentPages.Reward.MainRewardFragment;
 
 class MyPagerAdapter extends FragmentPagerAdapter {
 
@@ -25,15 +25,15 @@ class MyPagerAdapter extends FragmentPagerAdapter {
         }
         switch (position){
             case 0:
-                return new MainReward();
+                return new MainRewardFragment();
             case 1:
-                return new MainInvestment();
+                return new MainInvestmentFragment();
             case 2:
-                return new MainHome();
+                return new MainHomeFragment();
             case 3:
-                return new MainMyPage();
+                return new MainMyPageFragment();
             case 4:
-                return new MainMoreInfo();
+                return new MainMoreInfoFragment();
             default:
                 return null;
         }

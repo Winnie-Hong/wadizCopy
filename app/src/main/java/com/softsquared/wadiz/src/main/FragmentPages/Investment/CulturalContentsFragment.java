@@ -1,4 +1,4 @@
-package com.softsquared.wadiz.src.main.FragmentPages.Home;
+package com.softsquared.wadiz.src.main.FragmentPages.Investment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,8 +9,8 @@ import androidx.fragment.app.Fragment;
 
 import com.softsquared.wadiz.R;
 
-public class Maker extends Fragment {
+public class CulturalContentsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
-        return inflater.inflate(R.layout.fragment_maker, container, false);
+        return inflater.inflate(R.layout.fragment_cultural_content, container, false);
     }
 }

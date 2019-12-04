@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment;
 
 import com.softsquared.wadiz.R;
 
-public class MainMoreInfo extends Fragment {
+public class MainMoreInfoFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         return inflater.inflate(R.layout.fragment_main_moreinfo, container, false);
     }
