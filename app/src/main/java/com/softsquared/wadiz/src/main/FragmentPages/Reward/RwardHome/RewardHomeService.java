@@ -3,6 +3,8 @@ package com.softsquared.wadiz.src.main.FragmentPages.Reward.RwardHome;
 import com.softsquared.wadiz.src.main.FragmentPages.Reward.RwardHome.interfaces.RewardHomeFragmentView;
 import com.softsquared.wadiz.src.main.FragmentPages.Reward.RwardHome.interfaces.RewardHomeRetrofitInterface;
 import com.softsquared.wadiz.src.main.FragmentPages.Reward.RwardHome.models.BannerResponse;
+import com.softsquared.wadiz.src.main.FragmentPages.Reward.RwardHome.models.CategoryResponse;
+import com.softsquared.wadiz.src.main.FragmentPages.Reward.RwardHome.models.RewardProjectResponse;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -35,6 +37,52 @@ class RewardHomeService {
 
             @Override
             public void onFailure(Call<BannerResponse> call, Throwable t) {
+                mRewardHomeFragmentView.validateFailure(null);
+            }
+        });
+    }
+
+    void getCategory(){
+        final RewardHomeRetrofitInterface rewardHomeRetrofitInterface = getRetrofit().create(RewardHomeRetrofitInterface.class);
+        rewardHomeRetrofitInterface.getCategory().enqueue(new Callback<CategoryResponse>() {
+            @Override
+            public void onResponse(Call<CategoryResponse> call, Response<CategoryResponse> response) {
+                final CategoryResponse getCategory = response.body();
+                if (getCategory == null) {
+                    mRewardHomeFragmentView.validateFailure(null);
+                    return;
+                } else if (getCategory.getCode() == 200) {
+                    mRewardHomeFragmentView.getCategorySuccess(getCategory.getResult());
+                    return;
+                }
+                mRewardHomeFragmentView.validateFailure(getCategory.getMessage());
+            }
+
+            @Override
+            public void onFailure(Call<CategoryResponse> call, Throwable t) {
+                mRewardHomeFragmentView.validateFailure(null);
+            }
+        });
+    }
+
+    public void getRewardProject() {
+        final RewardHomeRetrofitInterface rewardHomeRetrofitInterface = getRetrofit().create(RewardHomeRetrofitInterface.class);
+        rewardHomeRetrofitInterface.getRewardProject("famous").enqueue(new Callback<RewardProjectResponse>() {
+            @Override
+            public void onResponse(Call<RewardProjectResponse> call, Response<RewardProjectResponse> response) {
+                final RewardProjectResponse getRewardProject = response.body();
+                if (getRewardProject == null) {
+                    mRewardHomeFragmentView.validateFailure(null);
+                    return;
+                } else if (getRewardProject.getCode() == 200) {
+                    mRewardHomeFragmentView.getRewardProjectSuccess(getRewardProject.getResult());
+                    return;
+                }
+                mRewardHomeFragmentView.validateFailure(getRewardProject.getMessage());
+            }
+
+            @Override
+            public void onFailure(Call<RewardProjectResponse> call, Throwable t) {
                 mRewardHomeFragmentView.validateFailure(null);
             }
         });

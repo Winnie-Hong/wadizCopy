@@ -21,7 +21,9 @@
         android:layout_height="50dp"
         app:tabGravity="fill"
         android:background="#ffffff"
-        app:tabMode="scrollable">
+        app:tabMode="scrollable"
+        app:tabIndicatorColor="#000000"
+        app:tabIndicatorFullWidth="false">
 
     </com.google.android.material.tabs.TabLayout>
 

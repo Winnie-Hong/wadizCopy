@@ -1,23 +1,112 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-    <pl.pzienowicz.autoscrollviewpager.AutoScrollViewPager
-        android:id="@+id/view_pager"
-        android:layout_width="match_parent"
-        android:layout_height="280dp" />
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/리워드홈"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="누구님, 이 펀딩 어때요?"
-        android:textSize="20sp"/>
+                <pl.pzienowicz.autoscrollviewpager.AutoScrollViewPager
+                    android:id="@+id/view_pager"
+                    android:layout_width="match_parent"
+                    android:layout_height="260dp" />
+
+                <ProgressBar
+                    android:id="@+id/progressbar_rewardhome"
+                    android:max="5"
+                    android:progress="1"
+                    style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                    android:progressDrawable="@drawable/progressbar_banner"
+                    android:layout_width="80dp"
+                    android:layout_height="2dp"
+                    android:layout_gravity="bottom"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="20dp"/>
+            </FrameLayout>
 
 
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerview_category"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
-</LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#cfcfcf" />
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp">
+
+                <TableRow>
+
+                    <EditText
+                        android:layout_width="150dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="6"
+                        android:background="@android:color/transparent"
+                        android:hint="검색" />
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:background="#cfcfcf" />
+
+                    <Button
+                        android:id="@+id/btn_showall"
+                        android:layout_height="match_parent"
+                        android:background="@android:color/transparent"
+                        android:text="전체" />
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:background="#cfcfcf" />
+
+
+                    <Button
+                        android:id="@+id/btn_orderby"
+                        android:layout_height="match_parent"
+                        android:background="@android:color/transparent"
+                        android:text="추천순" />
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:background="#cfcfcf" />
+
+
+                    <ImageView
+                        android:id="@+id/btn_menu"
+                        android:layout_width="30dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="6"
+                        android:clickable="true" />
+
+                </TableRow>
+            </TableLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#cfcfcf" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerview_home_project"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false"/>
+
+        </LinearLayout>
+</androidx.core.widget.NestedScrollView>

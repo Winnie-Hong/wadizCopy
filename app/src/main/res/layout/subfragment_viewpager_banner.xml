@@ -9,9 +9,12 @@
         android:layout_height="match_parent" />
 
     <LinearLayout
+        android:id="@+id/tv_discription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|start"
+        android:layout_marginLeft="20dp"
+        android:layout_marginBottom="20dp"
         android:orientation="vertical">
 
         <TextView
@@ -29,7 +32,8 @@
             android:layout_height="wrap_content"
             android:text="당신을 인싸로 만들어줄 리워드"
             android:textColor="#ffffff"
-            android:textSize="20sp" />
+            android:textSize="15sp" />
+
 
     </LinearLayout>
 

@@ -4,16 +4,16 @@ xmlns:app="http://schemas.android.com/apk/res-auto"
 xmlns:tools="http://schemas.android.com/tools"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
-android:gravity="center"
-android:orientation="vertical"
-tools:context=".src.main.MainActivity">
+tools:context=".src.main.MainActivity"
+    android:background="#ffffff">
 
 
 <RelativeLayout
     android:id="@+id/app_bar"
     android:layout_width="match_parent"
-    android:layout_height="30dp"
-    android:layout_margin="10dp">
+    android:layout_height="25dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginHorizontal="10dp">
 
     <ImageView
         android:layout_width="80dp"
@@ -22,18 +22,20 @@ tools:context=".src.main.MainActivity">
 
     <ImageView
         android:id="@+id/icon_search"
-        android:layout_width="wrap_content"
+        android:layout_width="20dp"
         android:layout_height="wrap_content"
         android:src="@drawable/icon_search"
         android:layout_toLeftOf="@+id/icon_alarm"
+        android:layout_marginHorizontal="20dp"
         android:clickable="true"/>
 
     <ImageView
         android:id="@+id/icon_alarm"
-        android:layout_width="wrap_content"
+        android:layout_width="20dp"
         android:layout_height="wrap_content"
         android:src="@drawable/icon_alarm"
         android:layout_alignParentRight="true"
+        android:layout_marginHorizontal="20dp"
         android:clickable="true"/>
 </RelativeLayout>
 
@@ -41,9 +43,10 @@ tools:context=".src.main.MainActivity">
 <androidx.viewpager.widget.ViewPager
     android:id="@+id/pager"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:background="#ffffff"
-    android:layout_below="@+id/app_bar">
+    android:layout_below="@+id/app_bar"
+    android:layout_above="@+id/tablayout">
 
 </androidx.viewpager.widget.ViewPager>
 
@@ -51,11 +54,11 @@ tools:context=".src.main.MainActivity">
 <com.google.android.material.tabs.TabLayout
     android:id="@+id/tablayout"
     android:layout_width="match_parent"
-    android:layout_height="60dp"
+    android:layout_height="50dp"
     android:layout_alignParentBottom="true"
     android:background="#ffffff"
-    app:tabGravity="fill">
-
+    app:tabGravity="fill"
+    app:tabIndicatorHeight="0dp">
 </com.google.android.material.tabs.TabLayout>
 
 
