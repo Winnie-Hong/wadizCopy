@@ -1,4 +1,4 @@
-package com.softsquared.wadiz.src.main.FragmentPages.Reward.RwardHome;
+package com.softsquared.wadiz.src.main.FragmentPages.Reward.RewardHome;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,13 +7,11 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.softsquared.wadiz.R;
-import com.softsquared.wadiz.src.main.FragmentPages.Reward.RwardHome.models.CategoryData;
-import com.softsquared.wadiz.src.main.FragmentPages.Reward.RwardHome.models.RewardProjectData;
+import com.softsquared.wadiz.src.main.FragmentPages.Reward.RewardHome.models.RewardProjectData;
 
 import java.util.ArrayList;
 

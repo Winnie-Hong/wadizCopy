@@ -5,8 +5,8 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
 import com.softsquared.wadiz.src.main.FragmentPages.Reward.GlobalFragment;
-import com.softsquared.wadiz.src.main.FragmentPages.Reward.OpenSoonFragment;
-import com.softsquared.wadiz.src.main.FragmentPages.Reward.RwardHome.RewardHomeFragment;
+import com.softsquared.wadiz.src.main.FragmentPages.Reward.OpenSoon.OpenSoonFragment;
+import com.softsquared.wadiz.src.main.FragmentPages.Reward.RewardHome.RewardHomeFragment;
 
 public class MyPagerAdapter_to_Reward extends FragmentPagerAdapter {
     int mNumOfPages;

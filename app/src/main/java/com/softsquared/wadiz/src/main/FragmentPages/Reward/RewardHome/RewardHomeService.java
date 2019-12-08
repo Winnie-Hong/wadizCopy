@@ -1,10 +1,12 @@
-package com.softsquared.wadiz.src.main.FragmentPages.Reward.RwardHome;
+package com.softsquared.wadiz.src.main.FragmentPages.Reward.RewardHome;
 
-import com.softsquared.wadiz.src.main.FragmentPages.Reward.RwardHome.interfaces.RewardHomeFragmentView;
-import com.softsquared.wadiz.src.main.FragmentPages.Reward.RwardHome.interfaces.RewardHomeRetrofitInterface;
-import com.softsquared.wadiz.src.main.FragmentPages.Reward.RwardHome.models.BannerResponse;
-import com.softsquared.wadiz.src.main.FragmentPages.Reward.RwardHome.models.CategoryResponse;
-import com.softsquared.wadiz.src.main.FragmentPages.Reward.RwardHome.models.RewardProjectResponse;
+import android.util.Log;
+
+import com.softsquared.wadiz.src.main.FragmentPages.Reward.RewardHome.interfaces.RewardHomeFragmentView;
+import com.softsquared.wadiz.src.main.FragmentPages.Reward.RewardHome.interfaces.RewardHomeRetrofitInterface;
+import com.softsquared.wadiz.src.main.FragmentPages.Reward.RewardHome.models.BannerResponse;
+import com.softsquared.wadiz.src.main.FragmentPages.Reward.RewardHome.models.CategoryResponse;
+import com.softsquared.wadiz.src.main.FragmentPages.Reward.RewardHome.models.RewardProjectResponse;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -19,7 +21,7 @@ class RewardHomeService {
         this.mRewardHomeFragmentView = rewardHomeFragmentView;
     }
 
-    void getBanner() {
+    public void getBanner() {
         final RewardHomeRetrofitInterface rewardHomeRetrofitInterface = getRetrofit().create(RewardHomeRetrofitInterface.class);
         rewardHomeRetrofitInterface.getBanner().enqueue(new Callback<BannerResponse>() {
             @Override
@@ -65,9 +67,9 @@ class RewardHomeService {
         });
     }
 
-    public void getRewardProject() {
+    public void getRewardProject(final String orderby) {
         final RewardHomeRetrofitInterface rewardHomeRetrofitInterface = getRetrofit().create(RewardHomeRetrofitInterface.class);
-        rewardHomeRetrofitInterface.getRewardProject("famous").enqueue(new Callback<RewardProjectResponse>() {
+        rewardHomeRetrofitInterface.getRewardProject(orderby).enqueue(new Callback<RewardProjectResponse>() {
             @Override
             public void onResponse(Call<RewardProjectResponse> call, Response<RewardProjectResponse> response) {
                 final RewardProjectResponse getRewardProject = response.body();

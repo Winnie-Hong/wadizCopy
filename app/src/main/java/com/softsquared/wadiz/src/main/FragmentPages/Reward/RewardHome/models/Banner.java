@@ -1,4 +1,4 @@
-package com.softsquared.wadiz.src.main.FragmentPages.Reward.RwardHome.models;
+package com.softsquared.wadiz.src.main.FragmentPages.Reward.RewardHome.models;
 
 import com.google.gson.annotations.SerializedName;
 

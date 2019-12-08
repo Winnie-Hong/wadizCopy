@@ -1,8 +1,8 @@
-package com.softsquared.wadiz.src.main.FragmentPages.Reward.RwardHome.interfaces;
+package com.softsquared.wadiz.src.main.FragmentPages.Reward.RewardHome.interfaces;
 
-import com.softsquared.wadiz.src.main.FragmentPages.Reward.RwardHome.models.Banner;
-import com.softsquared.wadiz.src.main.FragmentPages.Reward.RwardHome.models.CategoryData;
-import com.softsquared.wadiz.src.main.FragmentPages.Reward.RwardHome.models.RewardProjectData;
+import com.softsquared.wadiz.src.main.FragmentPages.Reward.RewardHome.models.Banner;
+import com.softsquared.wadiz.src.main.FragmentPages.Reward.RewardHome.models.CategoryData;
+import com.softsquared.wadiz.src.main.FragmentPages.Reward.RewardHome.models.RewardProjectData;
 
 import java.util.ArrayList;
 

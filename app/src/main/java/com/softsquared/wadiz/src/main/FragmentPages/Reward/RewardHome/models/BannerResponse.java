@@ -1,10 +1,10 @@
-package com.softsquared.wadiz.src.main.FragmentPages.Reward.RwardHome.models;
+package com.softsquared.wadiz.src.main.FragmentPages.Reward.RewardHome.models;
 
-        import com.google.gson.annotations.SerializedName;
-        import java.util.ArrayList;
+import com.google.gson.annotations.SerializedName;
 
-public class RewardProjectResponse {
+import java.util.ArrayList;
 
+public class BannerResponse {
     @SerializedName("code")
     private int code;
 
@@ -15,7 +15,7 @@ public class RewardProjectResponse {
     private boolean isSuccess;
 
     @SerializedName("result")
-    private ArrayList<RewardProjectData> result;
+    private ArrayList<Banner> result;
 
     public int getCode() {
         return code;
@@ -29,7 +29,7 @@ public class RewardProjectResponse {
         return isSuccess;
     }
 
-    public ArrayList<RewardProjectData> getResult() {
+    public ArrayList<Banner> getResult() {
         return result;
     }
 

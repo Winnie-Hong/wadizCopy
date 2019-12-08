@@ -1,4 +1,4 @@
-package com.softsquared.wadiz.src.main.FragmentPages.Reward.RwardHome;
+package com.softsquared.wadiz.src.main.FragmentPages.Reward.OpenSoon.models;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,12 +7,11 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-
 import androidx.viewpager.widget.PagerAdapter;
 
 import com.bumptech.glide.Glide;
 import com.softsquared.wadiz.R;
-import com.softsquared.wadiz.src.main.FragmentPages.Reward.RwardHome.models.Banner;
+import com.softsquared.wadiz.src.main.FragmentPages.Reward.RewardHome.models.Banner;
 
 import java.util.ArrayList;
 
@@ -35,7 +34,7 @@ public class AutoScrollAdapter extends PagerAdapter {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(LAYOUT_INFLATER_SERVICE);
         View v = inflater.inflate(R.layout.subfragment_viewpager_banner,null);
 
-        ImageView img_banner = (ImageView) v.findViewById(R.id.img_banner);
+        ImageView img_banner = v.findViewById(R.id.img_banner);
         TextView textViewTitle = v.findViewById(R.id.tv_banner_title);
         TextView textViewSubTitle = v.findViewById(R.id.tv_banner_subtitle);
 
@@ -51,7 +50,6 @@ public class AutoScrollAdapter extends PagerAdapter {
     public void destroyItem(ViewGroup container, int position, Object object) {
 
         container.removeView((View)object);
-
     }
 
     @Override
