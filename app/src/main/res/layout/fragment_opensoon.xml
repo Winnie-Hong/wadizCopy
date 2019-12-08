@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
     <FrameLayout
         android:id="@+id/frame"
@@ -28,6 +32,7 @@
     </FrameLayout>
 
     <TextView
+        android:id="@+id/tv_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="오픈예정 둘러보기"
@@ -39,7 +44,13 @@
         android:textColor="#000000"/>
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerview_opensoon_project"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_title"
+        android:layout_marginTop="20dp"
+        android:nestedScrollingEnabled="false"/>
 
 </RelativeLayout>
+
+</androidx.core.widget.NestedScrollView>

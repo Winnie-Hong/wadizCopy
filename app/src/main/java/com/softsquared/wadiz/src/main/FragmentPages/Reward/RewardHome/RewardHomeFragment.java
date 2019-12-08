@@ -108,14 +108,15 @@ public class RewardHomeFragment extends BaseFragment implements RewardHomeFragme
         autoViewPager = view.findViewById((R.id.view_pager));
         mScrollAdapter = new AutoScrollAdapter(getActivity(), mBannerArrayList);
         autoViewPager.setAdapter(mScrollAdapter); //Auto Viewpager에 Adapter 장착
-        autoViewPager.startAutoScroll(5000);
+        autoViewPager.startAutoScroll();
+        autoViewPager.setInterval(3000);
 
         getBanner();
         getCategory();
         getRewardProject("recommend");
 
         //category recycler view
-        mCategoryView = (RecyclerView) view.findViewById(R.id.recyclerview_category);
+        mCategoryView = view.findViewById(R.id.recyclerview_category);
         mCategoryData = new ArrayList<>();
 
         mLayoutManager = new LinearLayoutManager(getActivity());
@@ -125,7 +126,6 @@ public class RewardHomeFragment extends BaseFragment implements RewardHomeFragme
         mCategoryView.setAdapter(mCategoryAdapter);
 
         //project recycler view
-
         mRewardProjectView = view.findViewById(R.id.recyclerview_home_project);
         mRewardProjectData = new ArrayList<>();
 
@@ -137,7 +137,6 @@ public class RewardHomeFragment extends BaseFragment implements RewardHomeFragme
         mRewardProjectView.setAdapter(mRewardProjectAdapter);
 
         return view;
-
     }
 
     private void getBanner() {

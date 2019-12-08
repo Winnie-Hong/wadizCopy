@@ -1,7 +1,8 @@
-package com.softsquared.wadiz.src.main.FragmentPages.Reward.OpenSoon.models;
+package com.softsquared.wadiz.src.main.FragmentPages.Reward.OpenSoon;
 
 import com.softsquared.wadiz.src.main.FragmentPages.Reward.OpenSoon.interfaces.OpenSoonFragmentView;
 import com.softsquared.wadiz.src.main.FragmentPages.Reward.OpenSoon.interfaces.OpenSoonRetrofitInterface;
+import com.softsquared.wadiz.src.main.FragmentPages.Reward.OpenSoon.models.OpenSoonProjectResponse;
 import com.softsquared.wadiz.src.main.FragmentPages.Reward.RewardHome.models.BannerResponse;
 
 
@@ -42,4 +43,26 @@ public class  OpenSoonService {
     }
 
 
+    public void getUnopenedProject() {
+        final OpenSoonRetrofitInterface openSoonRetrofitInterface = getRetrofit().create(OpenSoonRetrofitInterface.class);
+        openSoonRetrofitInterface.getUnopenedProject().enqueue(new Callback<OpenSoonProjectResponse>() {
+            @Override
+            public void onResponse(Call<OpenSoonProjectResponse> call, Response<OpenSoonProjectResponse> response) {
+                final OpenSoonProjectResponse openSoonProjectResponse = response.body();
+                if (openSoonProjectResponse == null) {
+                    mOpenSoonFragmentView.validateFailure(null);
+                    return;
+                } else if (openSoonProjectResponse.getCode() == 200) {
+                    mOpenSoonFragmentView.getUnopenedProjectSuccess(openSoonProjectResponse.getResult());
+                    return;
+                }
+                mOpenSoonFragmentView.validateFailure(openSoonProjectResponse.getMessage());
+            }
+
+            @Override
+            public void onFailure(Call<OpenSoonProjectResponse> call, Throwable t) {
+                mOpenSoonFragmentView.validateFailure(null);
+            }
+        });
+    }
 }

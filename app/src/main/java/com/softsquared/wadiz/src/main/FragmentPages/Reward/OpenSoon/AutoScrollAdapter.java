@@ -1,4 +1,4 @@
-package com.softsquared.wadiz.src.main.FragmentPages.Reward.OpenSoon.models;
+package com.softsquared.wadiz.src.main.FragmentPages.Reward.OpenSoon;
 
 import android.content.Context;
 import android.view.LayoutInflater;

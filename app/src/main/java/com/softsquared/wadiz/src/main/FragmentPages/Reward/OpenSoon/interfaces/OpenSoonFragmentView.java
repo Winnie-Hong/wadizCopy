@@ -1,5 +1,6 @@
 package com.softsquared.wadiz.src.main.FragmentPages.Reward.OpenSoon.interfaces;
 
+import com.softsquared.wadiz.src.main.FragmentPages.Reward.OpenSoon.models.OpenSoonProjectData;
 import com.softsquared.wadiz.src.main.FragmentPages.Reward.RewardHome.models.Banner;
 import com.softsquared.wadiz.src.main.FragmentPages.Reward.RewardHome.models.CategoryData;
 import com.softsquared.wadiz.src.main.FragmentPages.Reward.RewardHome.models.RewardProjectData;
@@ -14,5 +15,9 @@ public interface OpenSoonFragmentView {
 
     void getBannerSuccess(ArrayList<Banner> bannerArrayList);
 
+    void getUnopenedProjectSuccess(ArrayList<OpenSoonProjectData> openSoonProjectDataArrayList);
 
+    void getBannerFailure(String message);
+
+    void getUnopenedProjectFailure(String message);
 }
