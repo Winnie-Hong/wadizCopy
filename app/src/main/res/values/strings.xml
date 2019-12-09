@@ -5,6 +5,8 @@
 
     <string name="reward_home_all">전체</string>
     <string name="search_bar_hint">어떤 프로젝트를 찾고 계신가요?</string>
+    <string name="signup_terms">와디즈 서비스 이용약관, 쿠폰포인트 오픈알림 뉴스레터 수신   (선택)</string>
+    <string name="password_validation"><![CDATA[영문, 숫자, 특수문자 (!@#$%^&*+-)를 조합한 8자 이상]]></string>
 
 </resources>
 

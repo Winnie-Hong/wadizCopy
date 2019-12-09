@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/activity_sign_up_bar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#F9F9F9"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/activity_search_icon_go_back"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_weight="1"
+            android:gravity="start"
+            android:src="@drawable/icon_back" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="4"
+            android:gravity="center"
+            android:text="회원가입"
+            android:textColor="#000000"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/activity_search_icon_go_home"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_weight="1"
+            android:gravity="end"
+            android:src="@drawable/icon_home" />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/activity_sign_up_bar">
+
+
+        <LinearLayout
+            android:id="@+id/activity_sign_up_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="회원가입"
+                android:textColor="#000000"
+                android:textSize="25sp"
+                android:textStyle="bold" />
+
+            <CheckBox
+                android:id="@+id/sign_up_agree_checkbox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:text="전체동의"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="15dp"
+                android:text="@string/signup_terms"
+                android:textColor="#000000"
+                android:textSize="13sp" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="15dp">
+
+                <EditText
+                    android:id="@+id/sign_up_email_validate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/login_edittext_style"
+                    android:hint="이메일 계정"
+                    android:imeOptions="actionDone"/>
+
+                <Button
+                    android:id="@+id/sign_up_btn_validate_email"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/sign_up_invalidate_btn"
+                    android:text="인증하기"
+                    android:layout_margin="5dp"
+                    android:textColor="#ffffff"
+                    android:layout_alignParentEnd="true"
+                    android:clickable="false"/>
+
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:text="위 이메일로 인증번호가 발송됩니다."
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/sign_up_invalidate_email_message"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="이메일을 입력해주세요"
+                android:textColor="@android:color/holo_red_dark"
+                android:textSize="12sp"
+                android:visibility="gone" />
+
+            <EditText
+                android:id="@+id/activity_sign_up_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:background="@drawable/signup_edittext_style"
+                android:hint="이름"
+                android:imeOptions="actionNext" />
+
+            <EditText
+                android:id="@+id/activity_sign_up_pw"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/signup_edittext_style"
+                android:hint="비밀번호 입력"
+                android:imeOptions="actionNext"/>
+
+            <EditText
+                android:id="@+id/activity_sign_up_re_pw"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/signup_edittext_style"
+                android:hint="비밀번호 확인"
+                android:imeOptions="actionNext" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:text="@string/password_validation"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/sign_up_invalidate_message"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="이메일을 입력해주세요"
+                android:textColor="@android:color/holo_red_dark"
+                android:textSize="12sp"
+                android:visibility="gone" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="프로모션 코드"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/activity_sign_up_promotion_code"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/login_edittext_style"
+                android:hint="신규 가입·친구 초대 프로모션 코드 입력"
+                android:imeOptions="actionNext"/>
+
+
+            <TextView
+                android:id="@+id/activity_sign_up_done"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/sign_up_invalidate_btn"
+                android:gravity="center"
+                android:paddingHorizontal="25dp"
+                android:text="완료"
+                android:textColor="#ffffff"
+                android:textSize="20sp" />
+
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+</RelativeLayout>

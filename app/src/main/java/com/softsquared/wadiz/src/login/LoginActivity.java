@@ -2,20 +2,15 @@ package com.softsquared.wadiz.src.login;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.KeyEvent;
 import android.view.View;
-import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.TextView;
 
 import com.softsquared.wadiz.R;
 import com.softsquared.wadiz.src.BaseActivity;
+import com.softsquared.wadiz.src.signUp.SignUpActivity;
 import com.softsquared.wadiz.src.login.interfaces.LoginActivityView;
 import com.softsquared.wadiz.src.login.models.LoginResponse;
-import com.softsquared.wadiz.src.main.FragmentPages.Reward.RewardHome.RewardHomeFragment;
-import com.softsquared.wadiz.src.main.FragmentPages.Reward.RewardHome.models.CategoryData;
-import com.softsquared.wadiz.src.main.FragmentPages.Reward.RewardHome.models.RewardProjectData;
 import com.softsquared.wadiz.src.main.MainActivity;
 
 import java.util.ArrayList;
@@ -31,6 +26,7 @@ public class LoginActivity extends BaseActivity implements LoginActivityView{
         final EditText editTextEmail;
         final EditText editTextPw;
         TextView loginButton;
+        TextView signUpButton;
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
@@ -39,7 +35,7 @@ public class LoginActivity extends BaseActivity implements LoginActivityView{
         editTextPw = findViewById(R.id.activity_login_et_password);
         loginButton = findViewById(R.id.activity_login_btn_login);
         validation = findViewById(R.id.activity_login_tv_validation);
-
+        signUpButton = findViewById(R.id.activity_login_btn_sign_up);
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,6 +48,13 @@ public class LoginActivity extends BaseActivity implements LoginActivityView{
             }
         });
 
+        signUpButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginActivity.this, SignUpActivity.class);
+                startActivity(intent);
+            }
+        });
 
     }
 
