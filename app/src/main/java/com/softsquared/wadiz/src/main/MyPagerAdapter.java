@@ -6,8 +6,8 @@ import androidx.fragment.app.FragmentPagerAdapter;
 
 import com.softsquared.wadiz.src.main.FragmentPages.Home.MainHomeFragment;
 import com.softsquared.wadiz.src.main.FragmentPages.Investment.MainInvestmentFragment;
-import com.softsquared.wadiz.src.main.FragmentPages.MainMoreInfoFragment;
-import com.softsquared.wadiz.src.main.FragmentPages.MainMyPageFragment;
+import com.softsquared.wadiz.src.main.FragmentPages.MoreInfo.MainMoreInfoFragment;
+import com.softsquared.wadiz.src.main.FragmentPages.MyPage.MainMyPageFragment;
 import com.softsquared.wadiz.src.main.FragmentPages.Reward.MainRewardFragment;
 
 class MyPagerAdapter extends FragmentPagerAdapter {

@@ -2,5 +2,9 @@
     <string name="app_name">wadiz</string>
     <string name="loading">로딩중입니다.</string>
     <string name="network_error">네트워크 연결이 원활하지 않습니다.</string>
+
+    <string name="reward_home_all">전체</string>
+    <string name="search_bar_hint">어떤 프로젝트를 찾고 계신가요?</string>
+
 </resources>
 

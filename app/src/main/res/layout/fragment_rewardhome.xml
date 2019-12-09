@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -16,7 +15,7 @@
             android:layout_height="wrap_content">
 
             <pl.pzienowicz.autoscrollviewpager.AutoScrollViewPager
-                android:id="@+id/view_pager"
+                android:id="@+id/fragment_reward_home_vp_banner"
                 android:layout_width="match_parent"
                 android:layout_height="260dp" />
 
@@ -43,23 +42,25 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="#cfcfcf" />
+            android:background="@color/lineColor" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="45dp">
 
             <EditText
+                android:id="@+id/fragment_reward_home_et_search"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="6"
                 android:background="@android:color/transparent"
                 android:hint="검색"
-                android:inputType="text" />
+                android:inputType="text"
+                android:imeOptions="actionSearch" />
 
             <ImageView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
                 android:layout_gravity="center"
                 android:src="@drawable/icon_search"
                 android:layout_weight="1"
@@ -76,7 +77,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="3"
                 android:background="@android:color/transparent"
-                android:text="전체" />
+                android:text="@string/reward_home_all" />
 
             <View
                 android:layout_width="1dp"
@@ -101,8 +102,7 @@
                 android:id="@+id/btn_menu"
                 android:layout_width="30dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:clickable="true" />
+                android:layout_weight="1" />
 
         </LinearLayout>
 

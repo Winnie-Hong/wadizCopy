@@ -21,7 +21,6 @@
         android:background="#ffffff"
         app:tabIndicatorColor="#000000"
         app:tabIndicatorFullWidth="false">
-
     </com.google.android.material.tabs.TabLayout>
 
 </RelativeLayout>

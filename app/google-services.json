@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "788772817298",
+    "firebase_url": "https://wadiz-3f34d.firebaseio.com",
+    "project_id": "wadiz-3f34d",
+    "storage_bucket": "wadiz-3f34d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:788772817298:android:af4198b69f458335fc994b",
+        "android_client_info": {
+          "package_name": "com.softsquared.wadiz"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "788772817298-u3s8mfgdsgjv9ghhq0dcg95anmgn44tq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.softsquared.wadiz",
+            "certificate_hash": "6ba594b79914e1ef7319a606d41e22e6fefb6560"
+          }
+        },
+        {
+          "client_id": "788772817298-5mgms1krn2d594lnbrfud9fifv7t7ava.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCQfyUtXwSEYKYXt1YDT6-HlW0aOTz9Rqo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "788772817298-5mgms1krn2d594lnbrfud9fifv7t7ava.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

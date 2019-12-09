@@ -1,7 +1,6 @@
 package com.softsquared.wadiz.src.main.FragmentPages.Reward.OpenSoon;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,9 +12,7 @@ import com.softsquared.wadiz.R;
 import com.softsquared.wadiz.src.BaseFragment;
 import com.softsquared.wadiz.src.main.FragmentPages.Reward.OpenSoon.interfaces.OpenSoonFragmentView;
 import com.softsquared.wadiz.src.main.FragmentPages.Reward.OpenSoon.models.OpenSoonProjectData;
-import com.softsquared.wadiz.src.main.FragmentPages.Reward.RewardHome.RewardProjectAdapter;
 import com.softsquared.wadiz.src.main.FragmentPages.Reward.RewardHome.models.Banner;
-import com.softsquared.wadiz.src.main.FragmentPages.Reward.RewardHome.models.RewardProjectData;
 
 
 import java.util.ArrayList;
@@ -24,11 +21,11 @@ import pl.pzienowicz.autoscrollviewpager.AutoScrollViewPager;
 
 public class OpenSoonFragment extends BaseFragment implements OpenSoonFragmentView {
 
-    AutoScrollViewPager autoViewPager;
-    ArrayList<Banner> mBannerArrayList;
-    AutoScrollAdapter mScrollAdapter;
+    private AutoScrollViewPager mAutoViewPager;
+    private ArrayList<Banner> mBannerArrayList;
+    private AutoScrollAdapter mScrollAdapter;
 
-    ArrayList<OpenSoonProjectData> mOpenSoonData;
+    private ArrayList<OpenSoonProjectData> mOpenSoonData;
     private RecyclerView mOpenSoonView;
     private OpenSoonProjectAdapter mOpenSoonProjectAdapter;
     private LinearLayoutManager mProjectLayoutManager;
@@ -39,10 +36,10 @@ public class OpenSoonFragment extends BaseFragment implements OpenSoonFragmentVi
 
         //배너 가져오기
         mBannerArrayList = new ArrayList<>(); //이미지 url를 저장하는 arraylist
-        autoViewPager = view.findViewById((R.id.view_pager));
+        mAutoViewPager = view.findViewById((R.id.view_pager));
         mScrollAdapter = new AutoScrollAdapter(getActivity(), mBannerArrayList);
-        autoViewPager.setAdapter(mScrollAdapter); //Auto Viewpager에 Adapter 장착
-        autoViewPager.startAutoScroll(5000);
+        mAutoViewPager.setAdapter(mScrollAdapter); //Auto Viewpager에 Adapter 장착
+        mAutoViewPager.startAutoScroll(5000);
 
         getBanner();
 
@@ -54,7 +51,7 @@ public class OpenSoonFragment extends BaseFragment implements OpenSoonFragmentVi
         mProjectLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         mOpenSoonView.setLayoutManager(mProjectLayoutManager);
         mOpenSoonProjectAdapter = new OpenSoonProjectAdapter(getActivity(), mOpenSoonData);
-        showCustomToast(getActivity(), mOpenSoonData.size() + "");
+//        showCustomToast(getActivity(), mOpenSoonData.size() + "");
         mOpenSoonView.setAdapter(mOpenSoonProjectAdapter);
 
         getUnopenedProject();

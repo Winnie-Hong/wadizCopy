@@ -1,4 +1,4 @@
-package com.softsquared.wadiz.src.main.FragmentPages;
+package com.softsquared.wadiz.src.main.FragmentPages.MoreInfo;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

@@ -3,6 +3,7 @@ package com.softsquared.wadiz.src.main.FragmentPages.Reward.RewardHome.interface
 import com.softsquared.wadiz.src.main.FragmentPages.Reward.RewardHome.models.BannerResponse;
 import com.softsquared.wadiz.src.main.FragmentPages.Reward.RewardHome.models.CategoryResponse;
 import com.softsquared.wadiz.src.main.FragmentPages.Reward.RewardHome.models.RewardProjectResponse;
+import com.softsquared.wadiz.src.main.FragmentPages.Reward.RewardHome.models.SearchProjectResponse;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -19,6 +20,11 @@ public interface RewardHomeRetrofitInterface {
     @GET("/project")
     Call<RewardProjectResponse> getRewardProject(
             @Query("orderby")  String orderby
+    );
+
+    @GET("/project/search")
+    Call<SearchProjectResponse> getSearchProject(
+            @Query("word")  String word
     );
 
 }

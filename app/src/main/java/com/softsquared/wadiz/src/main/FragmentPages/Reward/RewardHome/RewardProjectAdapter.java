@@ -37,7 +37,7 @@ public class RewardProjectAdapter extends RecyclerView.Adapter<RewardProjectAdap
     public void onBindViewHolder(RewardProjectViewHolder rewardProjectViewHolder, int position) {
         RewardProjectData rewardProjectData = rewardProjectDatas.get(position);
 
-        rewardProjectViewHolder.title.setText(rewardProjectData.getTitle());
+        rewardProjectViewHolder.textViewTitle.setText(rewardProjectData.getTitle());
         rewardProjectViewHolder.category.setText(rewardProjectData.getCategory());
         rewardProjectViewHolder.makername.setText(rewardProjectData.getMakerName());
         rewardProjectViewHolder.achievement.setText(rewardProjectData.getAchievement());
@@ -55,7 +55,7 @@ public class RewardProjectAdapter extends RecyclerView.Adapter<RewardProjectAdap
     class RewardProjectViewHolder extends RecyclerView.ViewHolder {
 
          ImageView thumbnail;
-         TextView title;
+         TextView textViewTitle;
          TextView category;
          TextView makername;
          TextView achievement;
@@ -66,7 +66,7 @@ public class RewardProjectAdapter extends RecyclerView.Adapter<RewardProjectAdap
             super(itemView);
 
             thumbnail = itemView.findViewById(R.id.icon_category);
-            title = itemView.findViewById(R.id.tv_project_title);
+            textViewTitle = itemView.findViewById(R.id.tv_project_title);
             category = itemView.findViewById(R.id.tv_project_category);
             makername = itemView.findViewById(R.id.tv_project_makername);
             achievement = itemView.findViewById(R.id.tv_project_achievement);

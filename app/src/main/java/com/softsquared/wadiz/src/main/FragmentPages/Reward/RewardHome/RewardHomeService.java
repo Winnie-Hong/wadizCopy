@@ -6,7 +6,11 @@ import com.softsquared.wadiz.src.main.FragmentPages.Reward.RewardHome.interfaces
 import com.softsquared.wadiz.src.main.FragmentPages.Reward.RewardHome.interfaces.RewardHomeRetrofitInterface;
 import com.softsquared.wadiz.src.main.FragmentPages.Reward.RewardHome.models.BannerResponse;
 import com.softsquared.wadiz.src.main.FragmentPages.Reward.RewardHome.models.CategoryResponse;
+import com.softsquared.wadiz.src.main.FragmentPages.Reward.RewardHome.models.SearchProjectData;
+import com.softsquared.wadiz.src.main.FragmentPages.Reward.RewardHome.models.SearchProjectResponse;
 import com.softsquared.wadiz.src.main.FragmentPages.Reward.RewardHome.models.RewardProjectResponse;
+
+import java.util.ArrayList;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -85,6 +89,29 @@ class RewardHomeService {
 
             @Override
             public void onFailure(Call<RewardProjectResponse> call, Throwable t) {
+                mRewardHomeFragmentView.validateFailure(null);
+            }
+        });
+    }
+
+    public void getSearchProject(String word) {
+        final RewardHomeRetrofitInterface rewardHomeRetrofitInterface = getRetrofit().create(RewardHomeRetrofitInterface.class);
+        rewardHomeRetrofitInterface.getSearchProject(word).enqueue(new Callback<SearchProjectResponse>() {
+            @Override
+            public void onResponse(Call<SearchProjectResponse> call, Response<SearchProjectResponse> response) {
+                final SearchProjectResponse getSearchProject = response.body();
+                if (getSearchProject == null) {
+                    mRewardHomeFragmentView.validateFailure(null);
+                    return;
+                } else if (getSearchProject.getCode() == 200) {
+                    mRewardHomeFragmentView.getSearchProjectSuccess(getSearchProject.getResult().getProjectResult());
+                    return;
+                }
+                mRewardHomeFragmentView.validateFailure(getSearchProject.getMessage());
+            }
+
+            @Override
+            public void onFailure(Call<SearchProjectResponse> call, Throwable t) {
                 mRewardHomeFragmentView.validateFailure(null);
             }
         });

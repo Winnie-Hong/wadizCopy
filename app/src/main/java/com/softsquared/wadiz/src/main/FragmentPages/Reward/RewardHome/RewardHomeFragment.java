@@ -4,11 +4,15 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -26,12 +30,12 @@ import pl.pzienowicz.autoscrollviewpager.AutoScrollViewPager;
 
 public class RewardHomeFragment extends BaseFragment implements RewardHomeFragmentView {
 
-    AutoScrollViewPager autoViewPager;
-    ArrayList<Banner> mBannerArrayList;
-    AutoScrollAdapter mScrollAdapter;
+    private AutoScrollViewPager mAutoViewPager;
+    private ArrayList<Banner> mBannerArrayList;
+    private AutoScrollAdapter mScrollAdapter;
 
-    ArrayList<CategoryData> mCategoryData;
-    ArrayList<RewardProjectData> mRewardProjectData;
+    private ArrayList<CategoryData> mCategoryData;
+    private ArrayList<RewardProjectData> mRewardProjectData;
 
     private RecyclerView mCategoryView;
     private CategoryAdapter mCategoryAdapter;
@@ -41,21 +45,23 @@ public class RewardHomeFragment extends BaseFragment implements RewardHomeFragme
     private RewardProjectAdapter mRewardProjectAdapter;
     private LinearLayoutManager mProjectLayoutManager;
 
-    Button mshowAll;
-    Button mOrderby;
-    ImageView mMenu;
+    private Button mShowAll;
+    private Button mOrderBy;
+    private ImageView mMenu;
+    private EditText mSearchProject;
 
     private int MAX_CATEGORY_COUNT = 17;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, final Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_rewardhome, container, false);
+        final View view = inflater.inflate(R.layout.fragment_rewardhome, container, false);
 
-        mshowAll = view.findViewById(R.id.btn_showall);
-        mOrderby = view.findViewById(R.id.btn_orderby);
+        mShowAll = view.findViewById(R.id.btn_showall);
+        mOrderBy = view.findViewById(R.id.btn_orderby);
         mMenu = view.findViewById(R.id.btn_menu);
+        mSearchProject = view.findViewById(R.id.fragment_reward_home_et_search);
 
         final int[] selectItem = {0};
-        mOrderby.setOnClickListener(new View.OnClickListener() {
+        mOrderBy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 final CharSequence[] oItems = {"추천순", "인기순", "펀딩액순", "마감임박순", "최신순", "응원참여자순"};
@@ -65,37 +71,34 @@ public class RewardHomeFragment extends BaseFragment implements RewardHomeFragme
                 oDialog.setSingleChoiceItems(oItems, 0, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        String orderby = "";
+                        String orderBy;
                         selectItem[0] = which;
                         mRewardProjectData.clear();
                         mRewardProjectAdapter.notifyItemRangeRemoved(0, mRewardProjectData.size());
                         switch (which) {
-                            case 0:
-                                orderby = "recommend";
-                                break;
                             case 1:
-                                orderby = "famous";
+                                orderBy = "famous";
                                 break;
                             case 2:
-                                orderby = "funding";
+                                orderBy = "funding";
                                 break;
                             case 3:
-                                orderby = "deadline";
+                                orderBy = "deadline";
                                 break;
                             case 4:
-                                orderby = "newp";
+                                orderBy = "newp";
                                 break;
                             case 5:
-                                orderby = "supporter";
+                                orderBy = "supporter";
                                 break;
                             default:
-                                orderby = "recommend";
+                                orderBy = "recommend";
                                 break;
                         }
-                        getRewardProject(orderby);
+                        getRewardProject(orderBy);
 //                        showCustomToast(getActivity(),orderby);
                         dialog.dismiss();
-                        mOrderby.setText(oItems[which]);
+                        mOrderBy.setText(oItems[which]);
                     }
                 })
                         .setCancelable(true)
@@ -105,11 +108,11 @@ public class RewardHomeFragment extends BaseFragment implements RewardHomeFragme
 
         //banner
         mBannerArrayList = new ArrayList<>(); //이미지 url를 저장하는 arraylist
-        autoViewPager = view.findViewById((R.id.view_pager));
+        mAutoViewPager = view.findViewById((R.id.fragment_reward_home_vp_banner));
         mScrollAdapter = new AutoScrollAdapter(getActivity(), mBannerArrayList);
-        autoViewPager.setAdapter(mScrollAdapter); //Auto Viewpager에 Adapter 장착
-        autoViewPager.startAutoScroll();
-        autoViewPager.setInterval(3000);
+        mAutoViewPager.setAdapter(mScrollAdapter); //Auto Viewpager에 Adapter 장착
+        mAutoViewPager.startAutoScroll();
+        mAutoViewPager.setInterval(3000);
 
         getBanner();
         getCategory();
@@ -136,6 +139,24 @@ public class RewardHomeFragment extends BaseFragment implements RewardHomeFragme
 //        showCustomToast(getActivity(), mRewardProjectData.size() + "");
         mRewardProjectView.setAdapter(mRewardProjectAdapter);
 
+        //search
+        mSearchProject.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                switch (actionId) {
+                    case EditorInfo.IME_ACTION_SEARCH:
+                        String word = v.getText().toString();
+//                        showCustomToast(getActivity(), word);
+                        mRewardProjectData.clear();
+                        getSearchProject(word);
+                        break;
+                    default:
+                        return false;
+                }
+                return true;
+            }
+        });
+
         return view;
     }
 
@@ -157,14 +178,19 @@ public class RewardHomeFragment extends BaseFragment implements RewardHomeFragme
         rewardHomeService.getRewardProject(orderby);
     }
 
+    private void getSearchProject(String word) {
+        showProgressDialog(getActivity());
+        final RewardHomeService rewardHomeService = new RewardHomeService(this);
+        rewardHomeService.getSearchProject(word);
+    }
 
     public void validateSuccess(String text) {
         hideProgressDialog();
-
     }
 
     public void validateFailure(String message) {
         showCustomToast(getActivity(), message == null || message.isEmpty() ? getString(R.string.network_error) : message);
+        Log.d("tag", message);
     }
 
     @Override
@@ -184,14 +210,15 @@ public class RewardHomeFragment extends BaseFragment implements RewardHomeFragme
     @Override
     public void getRewardProjectSuccess(ArrayList<RewardProjectData> rewardProjectData) {
         hideProgressDialog();
-
-        for (int i = 0; i < mRewardProjectData.size(); i++) {
-            Log.d("title", mRewardProjectData.get(i).getTitle());
-        }
-
         mRewardProjectData.addAll(rewardProjectData);
         mRewardProjectAdapter.notifyDataSetChanged();
     }
 
+    @Override
+    public void getSearchProjectSuccess(ArrayList<RewardProjectData> rewardProjectData) {
+        hideProgressDialog();
+        mRewardProjectData.addAll(rewardProjectData);
+        mRewardProjectAdapter.notifyDataSetChanged();
+    }
 
 }
