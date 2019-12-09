@@ -16,7 +16,7 @@ import androidx.fragment.app.FragmentManager;
 import com.google.android.material.tabs.TabLayout;
 import com.softsquared.wadiz.R;
 import com.softsquared.wadiz.src.BaseActivity;
-import com.softsquared.wadiz.src.main.FragmentPages.Reward.RewardHome.RewardHomeService;
+
 
 public class SearchActivity extends BaseActivity {
 

@@ -18,6 +18,7 @@
         tools:ignore="GoogleAppIndexingWarning"
         tools:targetApi="n">
         <activity android:name=".src.main.SearchActivity" />
+        <activity android:name=".src.login.LoginActivity"/>
         <activity android:name="com.softsquared.wadiz.src.main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

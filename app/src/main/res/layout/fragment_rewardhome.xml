@@ -77,7 +77,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="3"
                 android:background="@android:color/transparent"
-                android:text="@string/reward_home_all" />
+                android:text="@string/reward_home_all"
+                android:drawableStart="@drawable/icon_show_all"/>
 
             <View
                 android:layout_width="1dp"
@@ -90,7 +91,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="4"
                 android:background="@android:color/transparent"
-                android:text="추천순" />
+                android:text="추천순"
+                android:drawableStart="@drawable/icon_order_by"/>
 
             <View
                 android:layout_width="1dp"
@@ -101,8 +103,10 @@
             <ImageView
                 android:id="@+id/btn_menu"
                 android:layout_width="30dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1" />
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:src="@drawable/icon_menu_style"/>
 
         </LinearLayout>
 

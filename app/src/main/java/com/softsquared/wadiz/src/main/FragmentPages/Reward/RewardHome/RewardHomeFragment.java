@@ -28,7 +28,7 @@ import java.util.ArrayList;
 
 import pl.pzienowicz.autoscrollviewpager.AutoScrollViewPager;
 
-public class RewardHomeFragment extends BaseFragment implements RewardHomeFragmentView {
+public class   RewardHomeFragment extends BaseFragment implements RewardHomeFragmentView {
 
     private AutoScrollViewPager mAutoViewPager;
     private ArrayList<Banner> mBannerArrayList;
