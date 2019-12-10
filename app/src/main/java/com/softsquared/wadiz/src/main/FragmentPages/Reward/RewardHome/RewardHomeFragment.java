@@ -2,6 +2,7 @@ package com.softsquared.wadiz.src.main.FragmentPages.Reward.RewardHome;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -9,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -23,6 +25,7 @@ import com.softsquared.wadiz.src.main.FragmentPages.Reward.RewardHome.interfaces
 import com.softsquared.wadiz.src.main.FragmentPages.Reward.RewardHome.models.Banner;
 import com.softsquared.wadiz.src.main.FragmentPages.Reward.RewardHome.models.CategoryData;
 import com.softsquared.wadiz.src.main.FragmentPages.Reward.RewardHome.models.RewardProjectData;
+import com.softsquared.wadiz.src.projectDetails.ProjectDetailsActivity;
 
 import java.util.ArrayList;
 
@@ -52,7 +55,7 @@ public class   RewardHomeFragment extends BaseFragment implements RewardHomeFrag
 
     private int MAX_CATEGORY_COUNT = 17;
 
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, final Bundle savedInstanceState) {
+    public View onCreateView(final LayoutInflater inflater, ViewGroup container, final Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.fragment_rewardhome, container, false);
 
         mShowAll = view.findViewById(R.id.btn_showall);
@@ -139,6 +142,22 @@ public class   RewardHomeFragment extends BaseFragment implements RewardHomeFrag
 //        showCustomToast(getActivity(), mRewardProjectData.size() + "");
         mRewardProjectView.setAdapter(mRewardProjectAdapter);
 
+
+        //리사이클러뷰 아이템 클릭 이벤트
+        mRewardProjectAdapter.setOnItemClickListener(new RewardProjectAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View v, int position) {
+                int projectIdx = mRewardProjectData.get(position).getProjectIdx();
+                String remaining = mRewardProjectData.get(position).getRemaining();
+                Log.d("projectIdxSend", projectIdx+"");
+               Intent intent = new Intent(getActivity(), ProjectDetailsActivity.class);
+               intent.putExtra("projectIdx", projectIdx);
+               intent.putExtra("remaining", remaining);
+               startActivity(intent);
+            }
+        });
+
+
         //search
         mSearchProject.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
@@ -156,6 +175,7 @@ public class   RewardHomeFragment extends BaseFragment implements RewardHomeFrag
                 return true;
             }
         });
+
 
         return view;
     }
@@ -190,7 +210,7 @@ public class   RewardHomeFragment extends BaseFragment implements RewardHomeFrag
 
     public void validateFailure(String message) {
         showCustomToast(getActivity(), message == null || message.isEmpty() ? getString(R.string.network_error) : message);
-        Log.d("tag", message);
+//        Log.d("tag", message);
     }
 
     @Override

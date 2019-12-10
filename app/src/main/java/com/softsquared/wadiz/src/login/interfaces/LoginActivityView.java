@@ -8,5 +8,5 @@ public interface LoginActivityView {
 
     void validateFailure(String message);
 
-    void postSignInSuccess(String result);
+    void postSignInSuccess(String result,String jwt);
 }

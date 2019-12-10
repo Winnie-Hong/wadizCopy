@@ -100,7 +100,7 @@ public class EmailSignUpActivity extends BaseActivity implements SignUpActivityV
     @Override
     public void postSignUpSuccess(String message) {
         hideProgressDialog();
-        Log.d("tag", "success");
+//        Log.d("tag", "success");
         showCustomToast("회원가입 성공");
         Intent intent = new Intent(EmailSignUpActivity.this, LoginActivity.class);
         startActivity(intent);

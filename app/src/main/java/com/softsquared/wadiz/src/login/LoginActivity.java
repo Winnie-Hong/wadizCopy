@@ -1,7 +1,9 @@
 package com.softsquared.wadiz.src.login;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -14,6 +16,9 @@ import com.softsquared.wadiz.src.login.models.LoginResponse;
 import com.softsquared.wadiz.src.main.MainActivity;
 
 import java.util.ArrayList;
+
+import static com.softsquared.wadiz.src.ApplicationClass.X_ACCESS_TOKEN;
+import static com.softsquared.wadiz.src.ApplicationClass.sSharedPreferences;
 
 public class LoginActivity extends BaseActivity implements LoginActivityView{
 
@@ -71,8 +76,13 @@ public class LoginActivity extends BaseActivity implements LoginActivityView{
     }
 
     @Override
-    public void postSignInSuccess(String result) {
+    public void postSignInSuccess(String result,String jwt) {
         hideProgressDialog();
+
+        SharedPreferences.Editor editor = sSharedPreferences.edit();
+        editor.putString(X_ACCESS_TOKEN, jwt); // key, value를 이용하여 저장하는 형태
+        editor.apply();
+
         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
         startActivity(intent);
     }

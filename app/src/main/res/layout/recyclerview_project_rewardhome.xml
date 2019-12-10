@@ -80,7 +80,7 @@
                 android:text="52%"
                 android:textStyle="bold"
                 android:textSize="17sp"
-                android:textColor="#62a6a0"/>
+                android:textColor="@color/mainColor"/>
 
             <View
                 android:layout_width="3dp"

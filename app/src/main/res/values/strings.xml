@@ -7,6 +7,9 @@
     <string name="search_bar_hint">어떤 프로젝트를 찾고 계신가요?</string>
     <string name="signup_terms">와디즈 서비스 이용약관, 쿠폰포인트 오픈알림 뉴스레터 수신   (선택)</string>
     <string name="password_validation"><![CDATA[영문, 숫자, 특수문자 (!@#$%^&*+-)를 조합한 8자 이상]]></string>
+    <string name="fragment_global_explanation">해외의 많은 메이커들의 와디즈를 통한 국내 첫 진출 펀딩을 만나보세요!   \n공식 유통사를 통해 국내에 최초로 정식 런칭하는 리워드 프로젝트입니다.</string>
+    <string name="project_details_title">[전지적 매니저 시점] 운전자의 목을 지켜주는 차량용 목베게</string>
+    <string name="project_details_info_text">운전 시 가장 위험에 노출되어 있는 목! 전지적 매니저의 시점으로, 세상 모든 운전자들의 건강과 휴식, 안전을 위해 제대로 만든 차량용 목베게 </string>
 
 </resources>
 

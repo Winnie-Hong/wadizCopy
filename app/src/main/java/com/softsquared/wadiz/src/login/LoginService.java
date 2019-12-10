@@ -31,18 +31,14 @@ class LoginService {
                 final LoginResponse loginResponse = response.body();
                 if (loginResponse == null) {
                     mLoginActivityVIew.validateFailure(null);
-                    Log.d("tag", loginResponse.getMessage());
 
                     return;
                 }else if(loginResponse.getCode() == 200){
-                    mLoginActivityVIew.postSignInSuccess(loginResponse.getResult());
-                    Log.d("tag", loginResponse.getMessage());
-
+                    mLoginActivityVIew.postSignInSuccess(loginResponse.getMessage(),loginResponse.getResult());
+//System.out.println(loginResponse.getResult());
                     return;
                 }
                 mLoginActivityVIew.validateFailure(loginResponse.getMessage());
-                Log.d("tag", loginResponse.getMessage());
-
             }
 
 
