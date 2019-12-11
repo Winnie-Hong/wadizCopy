@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:id="@+id/listview_more_info_item">
+
+
+    <TextView
+        android:id="@+id/recyclerview_more_info_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="펀딩 오픈 신청하기"
+        android:layout_margin="15dp"
+        android:textColor="#000000"
+        android:textSize="17sp" />
+
+    <ImageView
+        android:id="@+id/recyclerview_more_info_next_btn"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="15dp"
+        android:src="@drawable/icon_next_btn" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/lineColor"
+        android:layout_marginTop="2dp"
+        android:layout_below="@+id/recyclerview_more_info_text"/>
+
+</RelativeLayout>

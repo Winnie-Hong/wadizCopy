@@ -26,6 +26,7 @@ public class ProjectDetailsActivity extends BaseActivity implements ProjectDetai
     int projectIdx;
     String remainingDays;
 
+    private TextView mBarTitle;
     private ImageView mThumbnail;
     private TextView mTitle;
     private TextView mCategory;
@@ -38,7 +39,8 @@ public class ProjectDetailsActivity extends BaseActivity implements ProjectDetai
     private TextView mMakerImg;
     private ImageView mFacebookBtn;
     private ImageView mInstagramBtn;
-    private WebView mWebView;
+//    private WebView mWebView;
+    private RoadView mWebView;
     private WebSettings mWebSettings;
 
     @Override
@@ -46,6 +48,8 @@ public class ProjectDetailsActivity extends BaseActivity implements ProjectDetai
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_project_details);
+
+        mBarTitle = findViewById(R.id.project_details_bar_title);
         mThumbnail = findViewById(R.id.project_details_thumbnail);
         mTitle = findViewById(R.id.project_details_title);
         mCategory = findViewById(R.id.project_details_category);
@@ -69,12 +73,6 @@ public class ProjectDetailsActivity extends BaseActivity implements ProjectDetai
         mWebSettings.setCacheMode(WebSettings.LOAD_NO_CACHE); // 브라우저 캐시 허용 여부
         mWebSettings.setDomStorageEnabled(true); // 로컬저장소 허용 여부
 
-//        mWebView.setOnTouchListener(new View.OnTouchListener() {
-//            @Override
-//            public boolean onTouch(View v, MotionEvent event) {
-//                return false;
-//            }
-//        });
 
         Intent intent = getIntent();
         projectIdx = intent.getExtras().getInt("projectIdx");
@@ -100,6 +98,7 @@ public class ProjectDetailsActivity extends BaseActivity implements ProjectDetai
     public void getProjectDetailsSuccess(ProjectDetailsData projectDetailsData) {
         hideProgressDialog();
 
+        mBarTitle.setText(projectDetailsData.getTitle());
         Glide.with(this).load(projectDetailsData.getThumbnail()).into(mThumbnail);
         mTitle.setText(projectDetailsData.getTitle());
         mCategory.setText(projectDetailsData.getCategory());
@@ -109,12 +108,6 @@ public class ProjectDetailsActivity extends BaseActivity implements ProjectDetai
         mRemaining.setText(remainingDays);
 
         mWebView.loadData(projectDetailsData.getProjectStory(), "text/html; charset=UTF-8", null);
-
-        //나머지 친구들은 잘 가져와지나 system
-//        System.out.println("상세 정보 가져오기 title : "+projectDetailsData.getTitle());//이거 하나만 확인해봐도 될 것 같아여
-        //그리고 lod.d 테스트 한거 다 지워버려영
-
-
 
     }
 
