@@ -1,10 +1,8 @@
-package com.softsquared.wadiz.src.projectDetails.models;
+package com.softsquared.wadiz.src.projectDetails.fragmentPages.story.models;
 
 import com.google.gson.annotations.SerializedName;
 
-import java.util.ArrayList;
-
-public class ProjectDetailsData {
+public class ProjectStoryData {
 
     @SerializedName("thumnail")
     private String thumbnail;

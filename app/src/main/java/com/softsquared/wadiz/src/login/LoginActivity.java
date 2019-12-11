@@ -79,6 +79,7 @@ public class LoginActivity extends BaseActivity implements LoginActivityView{
     public void postSignInSuccess(String result,String jwt) {
         hideProgressDialog();
 
+        showCustomToast("로그인 성공");
         SharedPreferences.Editor editor = sSharedPreferences.edit();
         editor.putString(X_ACCESS_TOKEN, jwt); // key, value를 이용하여 저장하는 형태
         editor.apply();

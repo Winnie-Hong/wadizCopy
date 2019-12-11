@@ -1,4 +1,4 @@
-package com.softsquared.wadiz.src.projectDetails;
+package com.softsquared.wadiz.src.projectDetails.fragmentPages.story;
 
 import android.content.Context;
 import android.util.AttributeSet;

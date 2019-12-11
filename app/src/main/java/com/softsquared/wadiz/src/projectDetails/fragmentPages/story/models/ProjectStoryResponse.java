@@ -1,11 +1,8 @@
-package com.softsquared.wadiz.src.projectDetails.models;
+package com.softsquared.wadiz.src.projectDetails.fragmentPages.story.models;
 
 import com.google.gson.annotations.SerializedName;
-import com.softsquared.wadiz.src.main.FragmentPages.Reward.RewardHome.models.CategoryData;
 
-import java.util.ArrayList;
-
-public class ProjectDetailsResponse {
+public class ProjectStoryResponse {
     @SerializedName("code")
     private int code;
 
@@ -16,7 +13,7 @@ public class ProjectDetailsResponse {
     private boolean isSuccess;
 
     @SerializedName("result")
-    private ProjectDetailsData result;
+    private ProjectStoryData result;
 
     public int getCode() {
         return code;
@@ -30,7 +27,7 @@ public class ProjectDetailsResponse {
         return isSuccess;
     }
 
-    public ProjectDetailsData getResult() {
+    public ProjectStoryData getResult() {
         return result;
     }
 

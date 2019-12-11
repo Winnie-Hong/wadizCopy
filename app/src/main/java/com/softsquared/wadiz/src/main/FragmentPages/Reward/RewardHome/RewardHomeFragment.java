@@ -10,7 +10,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -26,6 +25,7 @@ import com.softsquared.wadiz.src.main.FragmentPages.Reward.RewardHome.models.Ban
 import com.softsquared.wadiz.src.main.FragmentPages.Reward.RewardHome.models.CategoryData;
 import com.softsquared.wadiz.src.main.FragmentPages.Reward.RewardHome.models.RewardProjectData;
 import com.softsquared.wadiz.src.projectDetails.ProjectDetailsActivity;
+import com.softsquared.wadiz.src.projectDetails.fragmentPages.story.StoryFragment;
 
 import java.util.ArrayList;
 
