@@ -149,10 +149,12 @@ public class   RewardHomeFragment extends BaseFragment implements RewardHomeFrag
             public void onItemClick(View v, int position) {
                 int projectIdx = mRewardProjectData.get(position).getProjectIdx();
                 String remaining = mRewardProjectData.get(position).getRemaining();
+                String projectTitle = mRewardProjectData.get(position).getTitle();
                 Log.d("projectIdxSend", projectIdx+"");
                Intent intent = new Intent(getActivity(), ProjectDetailsActivity.class);
                intent.putExtra("projectIdx", projectIdx);
                intent.putExtra("remaining", remaining);
+               intent.putExtra("projectTitle", projectTitle);
                startActivity(intent);
             }
         });

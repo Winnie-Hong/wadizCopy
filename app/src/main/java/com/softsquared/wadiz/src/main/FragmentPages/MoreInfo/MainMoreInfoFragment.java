@@ -18,8 +18,8 @@ import java.util.ArrayList;
 
 public class MainMoreInfoFragment extends Fragment {
 
-    private ArrayList<MoreInfoData> mMoreInfoData = new ArrayList<>();
-    private ArrayList<MoreInfoData> mMoreInfoIntroduce = new ArrayList<>();
+//    private ArrayList<MoreInfoData> mMoreInfoData = new ArrayList<>();
+//    private ArrayList<MoreInfoData> mMoreInfoIntroduce = new ArrayList<>();
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         final View view = inflater.inflate(R.layout.fragment_main_moreinfo, container, false);

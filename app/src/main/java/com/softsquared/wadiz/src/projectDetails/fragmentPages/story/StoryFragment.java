@@ -72,6 +72,7 @@ public class StoryFragment extends BaseFragment implements StoryFragmentView {
             mWebSettings.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.TEXT_AUTOSIZING); // 컨텐츠 사이즈 맞추기
             mWebSettings.setCacheMode(WebSettings.LOAD_NO_CACHE); // 브라우저 캐시 허용 여부
             mWebSettings.setDomStorageEnabled(true); // 로컬저장소 허용 여부
+            mWebView.setOverScrollMode(View.OVER_SCROLL_NEVER);
 
 
             Intent intent = getActivity().getIntent();
@@ -102,7 +103,7 @@ public class StoryFragment extends BaseFragment implements StoryFragmentView {
     public void getProjectDetailsSuccess(ProjectStoryData projectStoryData) {
         hideProgressDialog();
 
-        Glide.with(this).load(projectStoryData.getThumbnail()).into(mThumbnail);
+        Glide.with(this).load(projectStoryData.getThumbnail()).centerCrop().into(mThumbnail);
         mTitle.setText(projectStoryData.getTitle());
         mCategory.setText(projectStoryData.getCategory());
         mInfoText.setText(projectStoryData.getInfoText());

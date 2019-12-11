@@ -18,12 +18,6 @@ import java.util.ArrayList;
 public class RewardProjectAdapter extends RecyclerView.Adapter<RewardProjectAdapter.RewardProjectViewHolder> {
     Context mContext;
 
-//    private AdapterView.OnItemClickListener onItemClickListener;
-//    public interface onItemClickListener {
-//        public void onClick(View itemView,int position);
-//    }
-
-
     private ArrayList<RewardProjectData> rewardProjectDatas;
 
     public RewardProjectAdapter(Context mContext, ArrayList<RewardProjectData> rewardProjectDatas) {

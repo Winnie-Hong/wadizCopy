@@ -82,6 +82,7 @@ public class LoginActivity extends BaseActivity implements LoginActivityView{
         showCustomToast("로그인 성공");
         SharedPreferences.Editor editor = sSharedPreferences.edit();
         editor.putString(X_ACCESS_TOKEN, jwt); // key, value를 이용하여 저장하는 형태
+        Log.d("token", jwt);
         editor.apply();
 
         Intent intent = new Intent(LoginActivity.this, MainActivity.class);

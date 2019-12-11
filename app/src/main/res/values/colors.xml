@@ -7,5 +7,6 @@
     <color name="lineColor">#cfcfcf</color>
     <color name="mainColor">#00C4C4</color>
     <color name="light_grey_background">#F9F9F9</color>
+    <color name="quantity_color_violet">#9b85ff</color>
 
 </resources>
