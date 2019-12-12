@@ -42,7 +42,6 @@ public class ProjectRewardFragment extends BaseFragment implements RewardFragmen
             projectIdx = intent.getExtras().getInt("projectIdx");
             getProjectReward(projectIdx);
 
-//            rewardList.add();
 
             RecyclerView recyclerView = view.findViewById(R.id.project_details_recycler_view);
             recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));

@@ -15,15 +15,37 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="현재 이 프로젝트에"
-                android:textSize="30sp"/>
+                android:textSize="22sp"/>
 
             <TextView
                 android:id="@+id/supporter_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="000명"
+                android:textSize="22sp"
+                android:textColor="@color/mainColor"
+                android:layout_below="@+id/supporter_tv_1"/>
+
+            <TextView
+                android:id="@+id/supporter_tv_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="의 참여가 이루어졌습니다."
+                android:textSize="22sp"
+                android:layout_toEndOf="@+id/supporter_number"
+                android:layout_alignTop="@id/supporter_number"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/supporter_rv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="000명의 참여가 이루어졌습니다."
-                android:textSize="30sp"/>
+                android:layout_below="@+id/supporter_number"
+                android:layout_marginTop="50dp"
+                android:layout_marginBottom="50dp"
+                android:nestedScrollingEnabled="false"
+                android:overScrollMode="never"/>
 
         </RelativeLayout>
+
 
     </androidx.core.widget.NestedScrollView>

@@ -234,6 +234,7 @@ public class   RewardHomeFragment extends BaseFragment implements RewardHomeFrag
         hideProgressDialog();
         mRewardProjectData.addAll(rewardProjectData);
         mRewardProjectAdapter.notifyDataSetChanged();
+
     }
 
     @Override

@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
@@ -45,6 +46,8 @@ public class RewardProjectAdapter extends RecyclerView.Adapter<RewardProjectAdap
         rewardProjectViewHolder.remaining.setText(rewardProjectData.getRemaining());
         Glide.with(mContext).load(rewardProjectData.getThumnail()).centerCrop().into(rewardProjectViewHolder.thumbnail);
 
+        String achievement = rewardProjectData.getAchievement();
+        rewardProjectViewHolder.progressBar.setProgress(Integer.parseInt(achievement.substring(0, achievement.length()-1)));
     }
 
     @Override
@@ -61,6 +64,7 @@ public class RewardProjectAdapter extends RecyclerView.Adapter<RewardProjectAdap
          TextView achievement;
          TextView amount;
          TextView remaining;
+         ProgressBar progressBar;
 
          RewardProjectViewHolder(View itemView) {
             super(itemView);
@@ -72,6 +76,7 @@ public class RewardProjectAdapter extends RecyclerView.Adapter<RewardProjectAdap
             achievement = itemView.findViewById(R.id.tv_project_achievement);
             amount = itemView.findViewById(R.id.tv_project_amount);
             remaining = itemView.findViewById(R.id.tv_project_remaining);
+            progressBar = itemView.findViewById(R.id.progressbar_rewardhome_achievement);
 
             itemView.setOnClickListener(new View.OnClickListener(){
                 @Override
