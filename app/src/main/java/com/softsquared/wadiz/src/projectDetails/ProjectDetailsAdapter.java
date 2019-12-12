@@ -5,11 +5,6 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
-import com.softsquared.wadiz.src.main.FragmentPages.Home.MainHomeFragment;
-import com.softsquared.wadiz.src.main.FragmentPages.Investment.MainInvestmentFragment;
-import com.softsquared.wadiz.src.main.FragmentPages.MoreInfo.MainMoreInfoFragment;
-import com.softsquared.wadiz.src.main.FragmentPages.MyPage.MainMyPageFragment;
-import com.softsquared.wadiz.src.main.FragmentPages.Reward.MainRewardFragment;
 import com.softsquared.wadiz.src.projectDetails.fragmentPages.community.ProjectCommunityFragment;
 import com.softsquared.wadiz.src.projectDetails.fragmentPages.fundGuide.ProjectFundGuideFragment;
 import com.softsquared.wadiz.src.projectDetails.fragmentPages.news.ProjectNewsFragment;

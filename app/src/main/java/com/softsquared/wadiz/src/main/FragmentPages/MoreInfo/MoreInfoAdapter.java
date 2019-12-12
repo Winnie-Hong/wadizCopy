@@ -32,7 +32,7 @@ public class MoreInfoAdapter extends RecyclerView.Adapter<MoreInfoAdapter.ViewHo
     }
 
     // 생성자에서 데이터 리스트 객체를 전달받음.
-    MoreInfoAdapter(ArrayList<String> list) {
+    public MoreInfoAdapter(ArrayList<String> list) {
         mData = list ;
     }
 

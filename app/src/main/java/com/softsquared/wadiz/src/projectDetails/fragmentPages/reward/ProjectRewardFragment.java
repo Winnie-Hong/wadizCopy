@@ -6,32 +6,30 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebSettings;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.widget.Button;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
-import com.google.android.material.tabs.TabLayout;
 import com.softsquared.wadiz.R;
 import com.softsquared.wadiz.src.BaseFragment;
-import com.softsquared.wadiz.src.main.FragmentPages.MoreInfo.MoreInfoAdapter;
+import com.softsquared.wadiz.src.login.LoginActivity;
+import com.softsquared.wadiz.src.projectDetails.ProjectDetailsActivity;
 import com.softsquared.wadiz.src.projectDetails.fragmentPages.reward.interfaces.RewardFragmentView;
 import com.softsquared.wadiz.src.projectDetails.fragmentPages.reward.models.ProjectRewardData;
-import com.softsquared.wadiz.src.projectDetails.fragmentPages.story.interfaces.StoryFragmentView;
-import com.softsquared.wadiz.src.projectDetails.fragmentPages.story.models.ProjectStoryData;
+import com.softsquared.wadiz.src.projectDetails.rewardPolicy.ActivityFundPolicy;
 
 import java.util.ArrayList;
+
+import static com.softsquared.wadiz.src.ApplicationClass.X_ACCESS_TOKEN;
+import static com.softsquared.wadiz.src.ApplicationClass.sSharedPreferences;
 
 public class ProjectRewardFragment extends BaseFragment implements RewardFragmentView{
 
     int projectIdx;
     private ArrayList<ProjectRewardData> mProjectRewardData = new ArrayList<>();
     private ProjectRewardAdapter mProjectRewardAdapter;
+    final String jwtToken = sSharedPreferences.getString(X_ACCESS_TOKEN, null);
 
     @Override
     public View onCreateView(final LayoutInflater inflater, ViewGroup container, final Bundle savedInstanceState) {
@@ -49,7 +47,10 @@ public class ProjectRewardFragment extends BaseFragment implements RewardFragmen
             RecyclerView recyclerView = view.findViewById(R.id.project_details_recycler_view);
             recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
             mProjectRewardAdapter = new ProjectRewardAdapter(getContext(), mProjectRewardData);
+//            recyclerView.setNestedScrollingEnabled(false);
             recyclerView.setAdapter(mProjectRewardAdapter);
+
+
 
             return view;
 

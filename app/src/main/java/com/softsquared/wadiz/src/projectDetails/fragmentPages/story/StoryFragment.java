@@ -67,12 +67,13 @@ public class StoryFragment extends BaseFragment implements StoryFragmentView {
             mWebSettings.setJavaScriptCanOpenWindowsAutomatically(false); // 자바스크립트 새창 띄우기(멀티뷰) 허용 여부
             mWebSettings.setLoadWithOverviewMode(true); // 메타태그 허용 여부
             mWebSettings.setUseWideViewPort(true); // 화면 사이즈 맞추기 허용 여부
-            mWebSettings.setSupportZoom(false); // 화면 줌 허용 여부
+            mWebSettings.setSupportZoom(false); // 화면 줌 허용 여부??
             mWebSettings.setBuiltInZoomControls(false); // 화면 확대 축소 허용 여부
             mWebSettings.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.TEXT_AUTOSIZING); // 컨텐츠 사이즈 맞추기
             mWebSettings.setCacheMode(WebSettings.LOAD_NO_CACHE); // 브라우저 캐시 허용 여부
             mWebSettings.setDomStorageEnabled(true); // 로컬저장소 허용 여부
             mWebView.setOverScrollMode(View.OVER_SCROLL_NEVER);
+            mWebView.setNestedScrollingEnabled(false);
 
 
             Intent intent = getActivity().getIntent();
@@ -89,7 +90,7 @@ public class StoryFragment extends BaseFragment implements StoryFragmentView {
     @Override
     public void validateFailure(String message) {
         hideProgressDialog();
-        showCustomToast(getActivity(), message);
+//        showCustomToast(getActivity(), message);
     }
 
     private void getProjectDetails(int projectIdx) {

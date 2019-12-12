@@ -8,7 +8,11 @@ import com.softsquared.wadiz.src.main.FragmentPages.Home.MainHomeFragment;
 import com.softsquared.wadiz.src.main.FragmentPages.Investment.MainInvestmentFragment;
 import com.softsquared.wadiz.src.main.FragmentPages.MoreInfo.MainMoreInfoFragment;
 import com.softsquared.wadiz.src.main.FragmentPages.MyPage.MainMyPageFragment;
+import com.softsquared.wadiz.src.main.FragmentPages.MyPage.MainMyPageLogoutFragment;
 import com.softsquared.wadiz.src.main.FragmentPages.Reward.MainRewardFragment;
+
+import static com.softsquared.wadiz.src.ApplicationClass.X_ACCESS_TOKEN;
+import static com.softsquared.wadiz.src.ApplicationClass.sSharedPreferences;
 
 class MyPagerAdapter extends FragmentPagerAdapter {
 
@@ -31,7 +35,10 @@ class MyPagerAdapter extends FragmentPagerAdapter {
             case 2:
                 return new MainHomeFragment();
             case 3:
-                return new MainMyPageFragment();
+                final String jwtToken = sSharedPreferences.getString(X_ACCESS_TOKEN, null);
+                if (jwtToken == null){
+                    return new MainMyPageLogoutFragment();
+                }else return new MainMyPageFragment();
             case 4:
                 return new MainMoreInfoFragment();
             default:

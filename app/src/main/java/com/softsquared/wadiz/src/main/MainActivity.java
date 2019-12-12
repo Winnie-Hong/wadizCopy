@@ -1,7 +1,9 @@
 package com.softsquared.wadiz.src.main;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -12,6 +14,9 @@ import com.google.android.material.tabs.TabLayout;
 import com.softsquared.wadiz.R;
 import com.softsquared.wadiz.src.BaseActivity;
 import com.softsquared.wadiz.src.main.interfaces.MainActivityView;
+
+import static com.softsquared.wadiz.src.ApplicationClass.X_ACCESS_TOKEN;
+import static com.softsquared.wadiz.src.ApplicationClass.sSharedPreferences;
 
 public class MainActivity extends BaseActivity implements MainActivityView {
     private ViewPager mViewPager;
@@ -25,6 +30,11 @@ public class MainActivity extends BaseActivity implements MainActivityView {
 
         mTabLayout = findViewById(R.id.tablayout);
         mSearchBtn = findViewById(R.id.icon_search);
+
+        final String jwtToken = sSharedPreferences.getString(X_ACCESS_TOKEN, null);
+        if (jwtToken == null){
+            showCustomToast("로그인 해주세요.");
+        }
 
         MyPagerAdapter adapter = new MyPagerAdapter(getSupportFragmentManager());
         mViewPager = findViewById(R.id.pager);

@@ -1,38 +1,140 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
-    android:orientation="vertical">
+    android:background="#ffffff"
+    android:scrollbars="none">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="와디즈에 처음 오셨나요?"
-        android:textColor="#000000"
-        android:textSize="25sp"
-        android:textStyle="bold" />
+        android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="20dp">
 
-    <TextView
-        android:layout_width="wrap_content"
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/profile_edit_btn_border"
+            android:padding="5dp"
+            android:text="   프로필 편집   "
+            android:textSize="12sp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp">
+
+            <TextView
+                android:id="@+id/mypage_my_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableEnd="@drawable/icon_next_btn_small"
+                android:text="홍송화"
+                android:textColor="#000000"
+                android:textSize="25sp"
+                android:textStyle="bold" />
+
+
+            <TextView
+                android:id="@+id/mypage_my_membership"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/mypage_my_name"
+                android:layout_marginTop="10dp"
+                android:text="개인 회원 / 일반 투자자" />
+
+            <ImageView
+                android:id="@+id/mypage_profile_img"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@mipmap/ic_launcher_round" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/mypage_my_investment_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawableTop="@drawable/icon_mypage_my_investment"
+                android:drawablePadding="5dp"
+                android:gravity="center"
+                android:text="나의 투자" />
+
+            <TextView
+                android:id="@+id/mypage_my_reward_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawableTop="@drawable/icon_mypage_my_reward"
+                android:drawablePadding="5dp"
+                android:gravity="center"
+                android:text="나의 리워드" />
+
+            <TextView
+                android:id="@+id/mypage_following_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawableTop="@drawable/icon_mypage_following"
+                android:drawablePadding="5dp"
+                android:gravity="center"
+                android:text="팔로잉" />
+
+            <TextView
+                android:id="@+id/mypage_liked_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawableTop="@drawable/icon_mypage_liked"
+                android:drawablePadding="5dp"
+                android:gravity="center"
+                android:text="좋아한" />
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/image_mypage_bank_account" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:gravity="center"
-        android:text="회원가입하고 \n 다양한 혜택을 받으세요!"
-        android:textSize="15sp" />
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/mypage_btn_login"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:background="@color/mainColor"
-        android:paddingHorizontal="25dp"
-        android:paddingVertical="15dp"
-        android:text="로그인 / 회원가입"
-        android:textColor="#ffffff"
-        android:textSize="23sp" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/mypage_menu_rv"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:nestedScrollingEnabled="false" />
 
-</LinearLayout>
+
+        <TextView
+            android:id="@+id/mypage_logout_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="30dp"
+            android:layout_margin="20dp"
+            android:background="@drawable/logout_btn_style"
+            android:padding="10dp"
+            android:text="로그아웃" />
+    </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>
