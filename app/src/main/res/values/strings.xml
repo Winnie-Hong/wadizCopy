@@ -16,6 +16,15 @@
     <string name="fund_guide_details1">펀딩 받은 후, 리워드를 제작할 수 있는 크라우드 펀딩의 특성과 생산 과정에서의 예상치 못한 상황으로 인하여 리워드 발송이 지연되거나 발송이 불가할 수 있습니다.</string>
     <string name="fund_guide_details2">와디즈에서 펀딩하는 방법이 궁금하다면?</string>
     <string name="fund_policy_notice"><b>"잠깐!"</b> 결제하기가 아닌 펀딩하기인 이유를 확인하고, 펀딩하세요.</string>
+    <string name="policy_explanation_text1">펀딩 후, 리워드를 제작, 준비하는 크라우드펀딩 특성상, 품질 이슈가 발생할 수 있습니다.  \n\n리워드 품질 이슈 발생 시 <b>메이커의 리워드 관련 정책</b>을 꼭 확인해주세요.</string>
+
+    <string name="policy_of_maker_name_text1">의 리워드 관련 정책</string>
+    <string name="policy_reward_date_text1">펀딩이 종료되고 목표 금액이 달성될 경우 </string>
+    <string name="policy_reward_date_text2"> 에 결제가 진행됩니다. \n\n펀딩 종료 </string>
+    <string name="policy_reward_date_text3"> 이후에는 메이커의 프로젝트 수행을 위해 결제 취소가 불가합니다. </string>
+
+    <string name="policy_explanation_text3">메이커가 약속한 리워드 발송 시작을 확인했나요? 메이커는 펀딩이 성공해야 리워드 제작, 준비를 진행합니다. \n\n리워드 펀딩 특성상 발송이 지연되거나 불가할 수 있으니, <b>메이커의 발송 지연 정책</b>을 꼭 확인해주세요.</string>
+    <string name="policy_of_maker_name_text2"> 발송 지연 정책</string>
 
 </resources>
 

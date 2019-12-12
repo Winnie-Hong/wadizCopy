@@ -22,7 +22,7 @@
         <activity android:name=".src.signUp.SignUpActivity"/>
         <activity android:name=".src.signUp.EmailSignUpActivity"/>
         <activity android:name=".src.projectDetails.ProjectDetailsActivity"/>
-        <activity android:name=".src.projectDetails.rewardPolicy.ActivityFundPolicy"/>
+        <activity android:name=".src.projectDetails.rewardPolicy.FundPolicyActivity"/>
         <activity android:name="com.softsquared.wadiz.src.main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

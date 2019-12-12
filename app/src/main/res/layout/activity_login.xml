@@ -68,7 +68,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:background="@drawable/login_edittext_style"
-            android:hint="비밀번호" />
+            android:hint="비밀번호"
+            android:inputType="textPassword"/>
 
         <TextView
             android:id="@+id/activity_login_tv_validation"

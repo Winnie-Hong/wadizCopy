@@ -31,6 +31,7 @@ public class MainActivity extends BaseActivity implements MainActivityView {
         mTabLayout = findViewById(R.id.tablayout);
         mSearchBtn = findViewById(R.id.icon_search);
 
+        //자동 로그인 체크
         final String jwtToken = sSharedPreferences.getString(X_ACCESS_TOKEN, null);
         if (jwtToken == null){
             showCustomToast("로그인 해주세요.");
@@ -40,7 +41,15 @@ public class MainActivity extends BaseActivity implements MainActivityView {
         mViewPager = findViewById(R.id.pager);
         mViewPager.setAdapter(new MyPagerAdapter(getSupportFragmentManager()));
 
+        //뷰페이저 설정
         mTabLayout.setupWithViewPager(mViewPager);
+
+        //탭 아이콘 설정
+        mTabLayout.getTabAt(0).setIcon(R.drawable.icon_main_reward);
+        mTabLayout.getTabAt(1).setIcon(R.drawable.icon_main_invest);
+        mTabLayout.getTabAt(2).setIcon(R.drawable.icon_main_home);
+        mTabLayout.getTabAt(3).setIcon(R.drawable.icon_main_my);
+        mTabLayout.getTabAt(4).setIcon(R.drawable.icon_main_more_info);
 
         mSearchBtn.setOnClickListener(new View.OnClickListener() {
             @Override

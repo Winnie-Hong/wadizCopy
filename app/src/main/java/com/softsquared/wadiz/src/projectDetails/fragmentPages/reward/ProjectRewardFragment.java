@@ -17,7 +17,7 @@ import com.softsquared.wadiz.src.login.LoginActivity;
 import com.softsquared.wadiz.src.projectDetails.ProjectDetailsActivity;
 import com.softsquared.wadiz.src.projectDetails.fragmentPages.reward.interfaces.RewardFragmentView;
 import com.softsquared.wadiz.src.projectDetails.fragmentPages.reward.models.ProjectRewardData;
-import com.softsquared.wadiz.src.projectDetails.rewardPolicy.ActivityFundPolicy;
+import com.softsquared.wadiz.src.projectDetails.rewardPolicy.FundPolicyActivity;
 
 import java.util.ArrayList;
 

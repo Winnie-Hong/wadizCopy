@@ -21,7 +21,7 @@ import com.google.android.material.tabs.TabLayout;
 import com.softsquared.wadiz.R;
 import com.softsquared.wadiz.src.BaseActivity;
 import com.softsquared.wadiz.src.login.LoginActivity;
-import com.softsquared.wadiz.src.projectDetails.rewardPolicy.ActivityFundPolicy;
+import com.softsquared.wadiz.src.projectDetails.rewardPolicy.FundPolicyActivity;
 
 import static com.softsquared.wadiz.src.ApplicationClass.X_ACCESS_TOKEN;
 import static com.softsquared.wadiz.src.ApplicationClass.sSharedPreferences;
@@ -29,6 +29,8 @@ import static com.softsquared.wadiz.src.ApplicationClass.sSharedPreferences;
 public class ProjectDetailsActivity extends BaseActivity{
 
     Button mFundBtn;
+    int mProjectIdx;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +52,7 @@ public class ProjectDetailsActivity extends BaseActivity{
         //프로젝트 제목 설정
         Intent intent = getIntent();
         mProjectTitle.setText(intent.getExtras().getString("projectTitle"));
+        mProjectIdx  = intent.getExtras().getInt("projectIdx");
 
         //뒤로가기 버튼
         ImageView mGoBackButton = findViewById(R.id.project_details_icon_go_back);
@@ -72,7 +75,8 @@ public class ProjectDetailsActivity extends BaseActivity{
                     startActivity(loginIntent);
                 }
                 else {
-                    Intent fundIntent = new Intent(ProjectDetailsActivity.this, ActivityFundPolicy.class);
+                    Intent fundIntent = new Intent(ProjectDetailsActivity.this, FundPolicyActivity.class);
+                    fundIntent.putExtra("projectIdx", mProjectIdx);
                     startActivity(fundIntent);
                 }
             }
