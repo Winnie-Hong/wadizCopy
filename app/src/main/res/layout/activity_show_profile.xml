@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/light_grey_background"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/activity_search_icon_go_back"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_weight="1"
+            android:gravity="start"
+            android:src="@drawable/icon_back" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="4"
+            android:gravity="center"
+            android:text="프로필"
+            android:textColor="#000000"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/activity_search_icon_go_home"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_weight="1"
+            android:gravity="end"
+            android:src="@drawable/icon_home" />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="30dp">
+
+                <TextView
+                    android:id="@+id/profile_my_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="홍송화"
+                    android:textColor="#000000"
+                    android:textSize="25sp"
+                    android:textStyle="bold" />
+
+
+                <TextView
+                    android:id="@+id/profile_my_membership"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/profile_my_name"
+                    android:layout_marginTop="10dp"
+                    android:text="개인 회원 / 일반 투자자" />
+
+                <ImageView
+                    android:id="@+id/profile_profile_img"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_alignParentEnd="true"
+                    android:src="@mipmap/ic_launcher_round" />
+
+                <TableLayout
+                    android:id="@+id/profile_table_layout"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/profile_profile_img"
+                    android:gravity="center">
+
+                    <TableRow>
+
+                        <TextView
+                            android:id="@+id/profile_funding_cnt"
+                            style="@style/profileBigFont"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_weight="1"
+                            android:text="2" />
+
+                        <TextView
+                            android:id="@+id/profile_support_cnt"
+                            style="@style/profileBigFont"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_weight="1"
+                            android:text="2" />
+
+                        <TextView
+                            android:id="@+id/profile_follower_cnt"
+                            style="@style/profileBigFont"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_weight="1"
+                            android:text="2" />
+
+                        <TextView
+                            android:id="@+id/profile_following_cnt"
+                            style="@style/profileBigFont"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_weight="1"
+                            android:text="2" />
+                    </TableRow>
+
+
+                    <TableRow>
+
+                        <TextView
+                            style="@style/profileSmallFont"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_weight="1"
+                            android:text="펀딩" />
+
+                        <TextView
+                            style="@style/profileSmallFont"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_weight="1"
+                            android:text="지지서명" />
+
+                        <TextView
+                            style="@style/profileSmallFont"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_weight="1"
+                            android:text="팔로워" />
+
+                        <TextView
+                            style="@style/profileSmallFont"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_weight="1"
+                            android:text="팔로잉" />
+                    </TableRow>
+                </TableLayout>
+
+                <TextView
+                    android:id="@+id/show_profile_edit_profile_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/profile_table_layout"
+                    android:layout_marginTop="50dp"
+                    android:background="@drawable/profile_edit_btn_border"
+                    android:padding="15dp"
+                    android:text="프로필 편집"
+                    android:textSize="16sp" />
+
+            </RelativeLayout>
+
+            <com.google.android.material.tabs.TabLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+</LinearLayout>

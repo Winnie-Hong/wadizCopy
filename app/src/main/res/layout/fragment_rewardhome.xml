@@ -89,7 +89,7 @@
                 android:id="@+id/btn_orderby"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="4"
+                android:layout_weight="5"
                 android:background="@android:color/transparent"
                 android:text="추천순"
                 android:drawableStart="@drawable/icon_order_by"/>

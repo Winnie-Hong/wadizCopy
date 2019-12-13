@@ -40,9 +40,11 @@
 
                 <CheckBox
                     android:id="@+id/project_details_reward_policy_cb1"
-                    style="@style/policy_checkbox_text_light"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:lineSpacingExtra="5dp"
+                    android:textColor="#cfcfcf"
                     android:layout_marginTop="5dp"
                     android:padding="10dp"
                     android:text="펀딩한 리워드는 새롭게 준비하고 있는 제품, 서비스입니다." />

@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,6 +22,8 @@ import com.softsquared.wadiz.R;
 import com.softsquared.wadiz.src.BaseFragment;
 import com.softsquared.wadiz.src.main.FragmentPages.MoreInfo.MoreInfoAdapter;
 import com.softsquared.wadiz.src.main.MainActivity;
+import com.softsquared.wadiz.src.profilePages.editProfile.EditProfileActivity;
+import com.softsquared.wadiz.src.profilePages.showProfile.ShowProfileActivity;
 
 import java.util.ArrayList;
 
@@ -34,6 +37,8 @@ public class MainMyPageFragment extends BaseFragment {
         final View view = inflater.inflate(R.layout.fragment_main_mypage, container, false);
 
         TextView logoutBtn = view.findViewById(R.id.mypage_logout_btn);
+TextView editProfileBtn = view.findViewById(R.id.mypage_edit_profile_btn);
+        RelativeLayout showProfileBtn = view.findViewById(R.id.mypage_show_profile_btn);
 
         //menu recyclerview 설정
         ArrayList<String> mypageList = new ArrayList<>();
@@ -47,6 +52,24 @@ public class MainMyPageFragment extends BaseFragment {
         recyclerViewNotice.setLayoutManager(new LinearLayoutManager(getActivity()));
         MoreInfoAdapter myPageAdapter = new MoreInfoAdapter(mypageList);
         recyclerViewNotice.setAdapter(myPageAdapter);
+
+        //프로필 편집 버튼
+        editProfileBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent editIntent = new Intent(getActivity(), EditProfileActivity.class);
+                startActivity(editIntent);
+            }
+        });
+
+        //프로필 부분 전체 클릭
+        showProfileBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent showIntent = new Intent(getActivity(), ShowProfileActivity.class);
+                startActivity(showIntent);
+            }
+        });
 
         //로그아웃 하기
         logoutBtn.setOnClickListener(new View.OnClickListener() {
@@ -73,7 +96,7 @@ public class MainMyPageFragment extends BaseFragment {
                         startActivity(intent);
                     }
                 });
-                alertDlg_logout.setNegativeButton("취소", new DialogInterface.OnClickListener() {
+                alertDlg_logout.setNegativeButton("취소",  new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();

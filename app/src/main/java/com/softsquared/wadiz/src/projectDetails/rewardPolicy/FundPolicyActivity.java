@@ -1,6 +1,7 @@
 package com.softsquared.wadiz.src.projectDetails.rewardPolicy;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -70,6 +71,38 @@ public class FundPolicyActivity extends BaseActivity implements FundPolicyView {
 //                Intent intent = new Intent(ActivityFundPolicy.this, ActivityFund.class);
             }
         });
+        mChkB1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    mChkB1.setTextColor(Color.parseColor("#808080"));
+                } else {
+                    mChkB1.setTextColor(Color.parseColor("#cfcfcf"));
+                }
+            }
+        });
+        mChkB2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    mChkB2.setTextColor(Color.parseColor("#808080"));
+                } else {
+                    mChkB2.setTextColor(Color.parseColor("#cfcfcf"));
+                }
+            }
+        });
+        mChkB3.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    mChkB3.setTextColor(Color.parseColor("#808080"));
+                } else {
+                    mChkB3.setTextColor(Color.parseColor("#cfcfcf"));
+                }
+            }
+        });
+
+
     }
 
     private void getFundPolicy(int projectIdx) {

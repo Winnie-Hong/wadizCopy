@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">wadiz</string>
+    <string name="app_name">와디즈</string>
     <string name="loading">로딩중입니다.</string>
     <string name="network_error">네트워크 연결이 원활하지 않습니다.</string>
 
@@ -25,6 +25,9 @@
 
     <string name="policy_explanation_text3">메이커가 약속한 리워드 발송 시작을 확인했나요? 메이커는 펀딩이 성공해야 리워드 제작, 준비를 진행합니다. \n\n리워드 펀딩 특성상 발송이 지연되거나 불가할 수 있으니, <b>메이커의 발송 지연 정책</b>을 꼭 확인해주세요.</string>
     <string name="policy_of_maker_name_text2"> 발송 지연 정책</string>
+    <string name="change_profile_img"><u>바꾸기</u></string>
+    <string name="delete_profile_img"><u>삭제</u></string>
+    <string name="upload_profile_img"><u>프로필 사진 등록하기</u></string>
 
 </resources>
 

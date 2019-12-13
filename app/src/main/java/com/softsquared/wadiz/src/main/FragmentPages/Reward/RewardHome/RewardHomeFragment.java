@@ -1,6 +1,7 @@
 package com.softsquared.wadiz.src.main.FragmentPages.Reward.RewardHome;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -170,6 +172,8 @@ public class   RewardHomeFragment extends BaseFragment implements RewardHomeFrag
 //                        showCustomToast(getActivity(), word);
                         mRewardProjectData.clear();
                         getSearchProject(word);
+                        InputMethodManager imm = (InputMethodManager)getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+                        imm.hideSoftInputFromWindow(mSearchProject.getWindowToken(), 0 ); // 키보드 숨기기
                         break;
                     default:
                         return false;
@@ -211,6 +215,7 @@ public class   RewardHomeFragment extends BaseFragment implements RewardHomeFrag
     }
 
     public void validateFailure(String message) {
+        hideProgressDialog();
         showCustomToast(getActivity(), message == null || message.isEmpty() ? getString(R.string.network_error) : message);
 //        Log.d("tag", message);
     }

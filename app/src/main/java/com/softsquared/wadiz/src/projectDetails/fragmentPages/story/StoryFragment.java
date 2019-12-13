@@ -1,5 +1,6 @@
 package com.softsquared.wadiz.src.projectDetails.fragmentPages.story;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -40,9 +41,10 @@ public class StoryFragment extends BaseFragment implements StoryFragmentView {
     private ImageView mFacebookBtn;
     private ImageView mInstagramBtn;
     //    private WebView mWebView;
-    private RoadView mWebView;
+    private WebView mWebView;
     private WebSettings mWebSettings;
 
+    @SuppressLint("SetJavaScriptEnabled")
     @Override
     public View onCreateView(final LayoutInflater inflater, ViewGroup container, final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,21 +61,30 @@ public class StoryFragment extends BaseFragment implements StoryFragmentView {
             mSupporterCnt = view.findViewById(R.id.project_details_supporter_cnt);
 
             //웹뷰
-            mWebView.setWebViewClient(new WebViewClient()); // 클릭시 새창 안뜨게
-            mWebView.setLayerType(WebView.LAYER_TYPE_SOFTWARE, null);
-            mWebSettings = mWebView.getSettings(); //세부 세팅 등록
-            mWebSettings.setJavaScriptEnabled(true); // 웹페이지 자바스크립트 허용 여부
-            mWebSettings.setSupportMultipleWindows(false); // 새창 띄우기 허용 여부
-            mWebSettings.setJavaScriptCanOpenWindowsAutomatically(false); // 자바스크립트 새창 띄우기(멀티뷰) 허용 여부
-            mWebSettings.setLoadWithOverviewMode(true); // 메타태그 허용 여부
-            mWebSettings.setUseWideViewPort(true); // 화면 사이즈 맞추기 허용 여부
-            mWebSettings.setSupportZoom(false); // 화면 줌 허용 여부??
-            mWebSettings.setBuiltInZoomControls(false); // 화면 확대 축소 허용 여부
-            mWebSettings.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.TEXT_AUTOSIZING); // 컨텐츠 사이즈 맞추기
-            mWebSettings.setCacheMode(WebSettings.LOAD_NO_CACHE); // 브라우저 캐시 허용 여부
-            mWebSettings.setDomStorageEnabled(true); // 로컬저장소 허용 여부
-            mWebView.setOverScrollMode(View.OVER_SCROLL_NEVER);
-            mWebView.setNestedScrollingEnabled(false);
+//            mWebView.setWebViewClient(new WebViewClient()); // 클릭시 새창 안뜨게
+//            mWebView.setLayerType(WebView.LAYER_TYPE_SOFTWARE, null);
+//            mWebSettings = mWebView.getSettings(); //세부 세팅 등록
+//            mWebSettings.setJavaScriptEnabled(true); // 웹페이지 자바스크립트 허용 여부
+//            mWebSettings.setSupportMultipleWindows(false); // 새창 띄우기 허용 여부
+//            mWebSettings.setJavaScriptCanOpenWindowsAutomatically(false); // 자바스크립트 새창 띄우기(멀티뷰) 허용 여부
+//            mWebSettings.setLoadWithOverviewMode(true); // 메타태그 허용 여부
+//            mWebSettings.setUseWideViewPort(true); // 화면 사이즈 맞추기 허용 여부
+//            mWebSettings.setSupportZoom(false); // 화면 줌 허용 여부??
+//            mWebSettings.setBuiltInZoomControls(false); // 화면 확대 축소 허용 여부
+//            mWebSettings.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.TEXT_AUTOSIZING); // 컨텐츠 사이즈 맞추기
+//            mWebSettings.setCacheMode(WebSettings.LOAD_NO_CACHE); // 브라우저 캐시 허용 여부
+//            mWebSettings.setDomStorageEnabled(true); // 로컬저장소 허용 여부
+//            mWebView.setOverScrollMode(View.OVER_SCROLL_NEVER);
+//            mWebView.setNestedScrollingEnabled(false);
+
+            mWebView.setWebViewClient(new WebViewClient());
+            mWebSettings = mWebView.getSettings();
+            mWebSettings.setJavaScriptEnabled(true);
+            mWebSettings.setSupportZoom(true);
+            mWebSettings.setBuiltInZoomControls(false);
+            mWebSettings.setDisplayZoomControls(false);
+            mWebSettings.setLoadWithOverviewMode(true);
+            mWebSettings.setUseWideViewPort(true);
 
 
             Intent intent = getActivity().getIntent();
