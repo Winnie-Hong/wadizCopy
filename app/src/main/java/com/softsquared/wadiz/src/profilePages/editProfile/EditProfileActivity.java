@@ -4,22 +4,20 @@ import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
+import android.graphics.drawable.ShapeDrawable;
+import android.graphics.drawable.shapes.OvalShape;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
-import android.text.Layout;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,54 +34,86 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.gun0912.tedpermission.PermissionListener;
 import com.gun0912.tedpermission.TedPermission;
-import com.softsquared.wadiz.BuildConfig;
 import com.softsquared.wadiz.R;
 import com.softsquared.wadiz.src.BaseActivity;
+import com.softsquared.wadiz.src.login.LoginActivity;
+import com.softsquared.wadiz.src.profilePages.editProfile.interfaces.EditProfileView;
+import com.softsquared.wadiz.src.signUp.EmailSignUpActivity;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import retrofit2.http.Url;
-
 import static android.view.View.GONE;
+import static android.view.View.INVISIBLE;
 
-public class EditProfileActivity extends BaseActivity {
+public class EditProfileActivity extends BaseActivity implements EditProfileView{
 
     private Uri imgUri;
     private Uri albumURI;
     private String mCurrentPhotoPath;
+    String profileUrl=null;
     private static final int FROM_CAMERA = 0;
     private static final int FROM_ALBUM = 1;
     Boolean isImageSet;
 
+    ImageView mProfileImgBg;
     ImageView mProfileImg;
     TextView mUploadImg;
     TextView mChangeImg;
     TextView mDeleteImg;
     LinearLayout mUploadLayout;
     LinearLayout mEditLayout;
-
+    Button mCancelBtn;
+    Button mOkBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile);
 
+        mProfileImgBg = findViewById(R.id.profile_profile_img_background);
         mProfileImg = findViewById(R.id.profile_profile_img);
         mUploadImg = findViewById(R.id.upload_profile_img_btn);
         mChangeImg = findViewById(R.id.change_profile_img_btn);
         mDeleteImg = findViewById(R.id.delete_profile_img_btn);
         mUploadLayout = findViewById(R.id.upload_profile_image_layout);
         mEditLayout = findViewById(R.id.edit_profile_image_layout);
+        mCancelBtn = findViewById(R.id.edit_profile_cancel_btn);
+        mOkBtn = findViewById(R.id.edit_profile_ok_btn);
+
+        //이미지 동그랗게
+        mProfileImg.setBackground(new ShapeDrawable(new OvalShape()));
+        mProfileImg.setClipToOutline(true);
+
+        mProfileImgBg.setBackground(new ShapeDrawable(new OvalShape()));
+        mProfileImgBg.setClipToOutline(true);
+
 
         //프로파일 이미지 있는지 확인
         isImageSet();
 
+        //취소버튼
+        mCancelBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+        //확인버튼
+        mOkBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                editProfileImg(profileUrl);
+                finish();
+            }
+        });
+
+
+        //사진 접근 허용 리스너
         PermissionListener permissionlistener = new PermissionListener() {
             @Override
             public void onPermissionGranted() {
@@ -108,13 +138,48 @@ public class EditProfileActivity extends BaseActivity {
         mUploadImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                makeDialog();
+                makeImgSelectDialog();
             }
         });
+
+        //이미지 변경 버튼
+        mChangeImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                makeImgSelectDialog();
+            }
+        });
+
+        //이미지 삭제 버튼
+        mDeleteImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                makeImgDeleteDialog();
+            }
+        });
+
+    }//onCreate
+
+    //프로파일 사진 수정
+    private void editProfileImg(String profileUrl) {
+        showProgressDialog();
+        final EditProfileService editProfileService = new EditProfileService((EditProfileView) this);
+        editProfileService.patchEditProfileImg(profileUrl);
     }
 
+    public void validateFailure(String message) {
+        hideProgressDialog();
+    }
+
+    @Override
+    public void patchProfileImgSuccess(String result, String jwt) {
+        hideProgressDialog();
+        showCustomToast("프로필 사진이 저장되었습니다.");
+    }
+
+
     //사진 선택 다이얼로그
-    private void makeDialog() {
+    private void makeImgSelectDialog() {
         AlertDialog.Builder alt_bld = new AlertDialog.Builder(EditProfileActivity.this);
         alt_bld.setTitle("사진 업로드").setCancelable(false).setPositiveButton("사진촬영",
                 new DialogInterface.OnClickListener() {
@@ -142,6 +207,24 @@ public class EditProfileActivity extends BaseActivity {
         alert.show();
     }
 
+    //사진 삭제 다이얼로그
+    private void makeImgDeleteDialog() {
+        AlertDialog.Builder delete_alt_bld = new AlertDialog.Builder(EditProfileActivity.this);
+        delete_alt_bld.setTitle("프로필 사진을 삭제하시겠습니까?").setCancelable(false).setPositiveButton("취소",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.dismiss();
+                    }
+                }).setNegativeButton("확인",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.dismiss();
+                        mProfileImg.setVisibility(INVISIBLE);
+                    }
+                });
+        AlertDialog alert = delete_alt_bld.create();
+        alert.show();
+    }
 
     //앨범 선택 클릭
     public void selectAlbum() {
@@ -152,8 +235,7 @@ public class EditProfileActivity extends BaseActivity {
         startActivityForResult(intent, FROM_ALBUM);
     }
 
-//사진 찍기 클릭
-
+    //사진 찍기 클릭
     public void takePhoto() {
         // 촬영 후 이미지 가져옴
         String state = Environment.getExternalStorageState();
@@ -255,6 +337,7 @@ public class EditProfileActivity extends BaseActivity {
         return cursor.getString(index);
     }
 
+//파이어베이스에 업로드하기
     private void uploadToFirebase(final String photoUriPath) {
         //업로드할 파일이 있으면 수행
         final Uri file = Uri.fromFile(new File(photoUriPath));
@@ -273,7 +356,7 @@ public class EditProfileActivity extends BaseActivity {
         String filename = formatter.format(now) + ".png";
 
         //storage 주소와 폴더 파일명을 지정해 준다.
-        StorageReference storageRef = storage.getReferenceFromUrl("gs://wadiz-3f34d.appspot.com").child("images/" + filename);
+        final StorageReference storageRef = storage.getReferenceFromUrl("gs://wadiz-3f34d.appspot.com").child("images/" + filename);
         //파일 업로드
         storageRef.putFile(file)
                 //성공시
@@ -282,6 +365,11 @@ public class EditProfileActivity extends BaseActivity {
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                         progressDialog.dismiss(); //업로드 진행 Dialog 상자 닫기
                         Toast.makeText(getApplicationContext(), "업로드 완료!", Toast.LENGTH_SHORT).show();
+                        mProfileImg.setVisibility(View.VISIBLE);
+                        isImageSet();
+
+                        //url경로 받아오기
+                        profileUrl = String.valueOf(storageRef.getDownloadUrl());
                     }
                 })
                 //실패시
@@ -303,19 +391,21 @@ public class EditProfileActivity extends BaseActivity {
                         progressDialog.setMessage("Uploaded " + ((int) progress) + "% ...");
                     }
                 });
-
-
     }
 
-    public boolean isImageSet(){
-        if(mProfileImg !=null){
+    public boolean isImageSet() {
+        if (mProfileImg.getVisibility() == View.VISIBLE) {
             isImageSet = true;
             mUploadLayout.setVisibility(GONE);
             mEditLayout.setVisibility(View.VISIBLE);
-        }else {
+            mProfileImg.setVisibility(View.VISIBLE);
+            Log.d("tag", "이미지 있음");
+        } else {
             isImageSet = false;
             mUploadLayout.setVisibility(View.VISIBLE);
             mEditLayout.setVisibility(GONE);
+            mProfileImg.setVisibility(INVISIBLE);
+            Log.d("tag", "이미지 없음");
         }
         return isImageSet;
     }

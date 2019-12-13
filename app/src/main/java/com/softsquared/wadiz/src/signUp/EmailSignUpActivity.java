@@ -200,9 +200,9 @@ public class EmailSignUpActivity extends BaseActivity implements SignUpActivityV
     }
 
     private void postSignUp(String email, String name, String pw, String repw) {
-        showProgressDialog();
-        final SignUpService signUpService = new SignUpService(this);
-        signUpService.postSignUp(email, name, pw, repw);
+            showProgressDialog();
+            final SignUpService signUpService = new SignUpService(this);
+            signUpService.postSignUp(email, name, pw, repw);
     }
 
     public void validateFailure(String message) {
