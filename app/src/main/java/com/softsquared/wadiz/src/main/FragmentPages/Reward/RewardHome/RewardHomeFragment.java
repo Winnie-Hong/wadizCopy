@@ -169,7 +169,6 @@ public class   RewardHomeFragment extends BaseFragment implements RewardHomeFrag
                 switch (actionId) {
                     case EditorInfo.IME_ACTION_SEARCH:
                         String word = v.getText().toString();
-//                        showCustomToast(getActivity(), word);
                         mRewardProjectData.clear();
                         getSearchProject(word);
                         InputMethodManager imm = (InputMethodManager)getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);

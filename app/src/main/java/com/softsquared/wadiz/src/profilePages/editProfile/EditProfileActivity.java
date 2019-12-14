@@ -16,6 +16,8 @@ import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -36,13 +38,14 @@ import com.gun0912.tedpermission.PermissionListener;
 import com.gun0912.tedpermission.TedPermission;
 import com.softsquared.wadiz.R;
 import com.softsquared.wadiz.src.BaseActivity;
-import com.softsquared.wadiz.src.login.LoginActivity;
 import com.softsquared.wadiz.src.profilePages.editProfile.interfaces.EditProfileView;
-import com.softsquared.wadiz.src.signUp.EmailSignUpActivity;
+import com.softsquared.wadiz.src.profilePages.editProfile.models.CategoryItem;
+import com.softsquared.wadiz.src.profilePages.editProfile.models.EditProfileItems;
 
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -50,6 +53,10 @@ import static android.view.View.GONE;
 import static android.view.View.INVISIBLE;
 
 public class EditProfileActivity extends BaseActivity implements EditProfileView{
+
+
+    private EditProfileItems mEditProfileItems;// 서버로 보낼때 사용하는 class
+    private ArrayList<CategoryItem> mCategoryIdx =new ArrayList<>();// 보내는 class 안에 배열로 보낼 것
 
     private Uri imgUri;
     private Uri albumURI;
@@ -68,6 +75,16 @@ public class EditProfileActivity extends BaseActivity implements EditProfileView
     LinearLayout mEditLayout;
     Button mCancelBtn;
     Button mOkBtn;
+    CheckBox mChkCategoryItems1;
+    CheckBox mChkCategoryItems2;
+    CheckBox mChkCategoryItems3;
+    CheckBox mChkCategoryItems4;
+    CheckBox mChkCategoryItems5;
+    CheckBox mChkCategoryItems6;
+    CheckBox mChkCategoryItems7;
+    CheckBox mChkCategoryItems8;
+    ArrayList<CheckBox> mChkCategoryItems =new ArrayList<>();
+    EditText mUserInfo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,6 +100,26 @@ public class EditProfileActivity extends BaseActivity implements EditProfileView
         mEditLayout = findViewById(R.id.edit_profile_image_layout);
         mCancelBtn = findViewById(R.id.edit_profile_cancel_btn);
         mOkBtn = findViewById(R.id.edit_profile_ok_btn);
+
+        mChkCategoryItems1 =findViewById(R.id.edit_profile_categoryItems1);
+        mChkCategoryItems2 =findViewById(R.id.edit_profile_categoryItems2);
+        mChkCategoryItems3 =findViewById(R.id.edit_profile_categoryItems3);
+        mChkCategoryItems4 =findViewById(R.id.edit_profile_categoryItems4);
+        mChkCategoryItems5 =findViewById(R.id.edit_profile_categoryItems5);
+        mChkCategoryItems6 =findViewById(R.id.edit_profile_categoryItems6);
+        mChkCategoryItems7 =findViewById(R.id.edit_profile_categoryItems7);
+        mChkCategoryItems8 =findViewById(R.id.edit_profile_categoryItems8);
+        mUserInfo = findViewById(R.id.edit_profile_userinfo);
+
+        mChkCategoryItems.add(mChkCategoryItems1);
+        mChkCategoryItems.add(mChkCategoryItems2);
+        mChkCategoryItems.add(mChkCategoryItems3);
+        mChkCategoryItems.add(mChkCategoryItems4);
+        mChkCategoryItems.add(mChkCategoryItems5);
+        mChkCategoryItems.add(mChkCategoryItems6);
+        mChkCategoryItems.add(mChkCategoryItems7);
+        mChkCategoryItems.add(mChkCategoryItems8);
+
 
         //이미지 동그랗게
         mProfileImg.setBackground(new ShapeDrawable(new OvalShape()));
@@ -103,12 +140,28 @@ public class EditProfileActivity extends BaseActivity implements EditProfileView
             }
         });
 
+
         //확인버튼
         mOkBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                editProfileImg(profileUrl);
-                finish();
+
+                if (isImageSet){
+                    editProfileImg(profileUrl);
+                }
+
+                mCategoryIdx.clear();
+                //카테고리 체크 인덱스 가져오기
+                for(int i = 0; i< mChkCategoryItems.size(); i++){
+                    if(mChkCategoryItems.get(i).isChecked()){
+                        mCategoryIdx.add(new CategoryItem(i+1));
+                    }
+                }
+
+                //나의 소개 가져오기
+                String userInfoText = String.valueOf(mUserInfo.getText());
+                mEditProfileItems = new EditProfileItems(userInfoText, mCategoryIdx);
+                patchEditProfileDetails(mEditProfileItems);
             }
         });
 
@@ -124,7 +177,6 @@ public class EditProfileActivity extends BaseActivity implements EditProfileView
             public void onPermissionDenied(List<String> deniedPermissions) {
                 Toast.makeText(EditProfileActivity.this, "Permission Denied\n" + deniedPermissions.toString(), Toast.LENGTH_SHORT).show();
             }
-
         };
 
         //권한체크
@@ -160,21 +212,35 @@ public class EditProfileActivity extends BaseActivity implements EditProfileView
 
     }//onCreate
 
+    private void patchEditProfileDetails(EditProfileItems editProfileItems) {
+        showProgressDialog();
+        final EditProfileService editProfileService = new EditProfileService(this);
+        editProfileService.patchEditProfileDetails(editProfileItems);
+    }
+
     //프로파일 사진 수정
     private void editProfileImg(String profileUrl) {
         showProgressDialog();
-        final EditProfileService editProfileService = new EditProfileService((EditProfileView) this);
+        final EditProfileService editProfileService = new EditProfileService(this);
         editProfileService.patchEditProfileImg(profileUrl);
     }
 
     public void validateFailure(String message) {
         hideProgressDialog();
+        showCustomToast(message);
     }
 
     @Override
     public void patchProfileImgSuccess(String result, String jwt) {
         hideProgressDialog();
         showCustomToast("프로필 사진이 저장되었습니다.");
+    }
+
+    @Override
+    public void patchProfileDetailsSuccess(String result, String jwt) {
+        hideProgressDialog();
+        showCustomToast(result);
+        finish();
     }
 
 

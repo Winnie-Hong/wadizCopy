@@ -70,6 +70,8 @@ public class ProjectSupporterFragment extends BaseFragment implements SupporterF
         mSupporterCnt.setText(SupporterNum);
         Log.d("supporter", "인원 조회 성공");
 
+        //클리어
+        mSupportResultData.clear();
         mSupportResultData.addAll(supporterData.getSupportResult());
         mSupportAdapter.notifyDataSetChanged();
     }

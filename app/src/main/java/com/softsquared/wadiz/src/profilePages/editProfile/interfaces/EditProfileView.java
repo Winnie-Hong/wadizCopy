@@ -5,4 +5,7 @@ public interface EditProfileView {
     void validateFailure(String message);
 
     void patchProfileImgSuccess(String result, String jwt);
+
+    void patchProfileDetailsSuccess(String result, String jwt);
+
 }

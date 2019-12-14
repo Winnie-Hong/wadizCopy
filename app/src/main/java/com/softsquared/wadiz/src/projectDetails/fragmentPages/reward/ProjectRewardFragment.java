@@ -72,6 +72,8 @@ public class ProjectRewardFragment extends BaseFragment implements RewardFragmen
     @Override
     public void getProjectRewardSuccess(ArrayList<ProjectRewardData> projectRewardData) {
         hideProgressDialog();
+
+        mProjectRewardData.clear();
         mProjectRewardData.addAll(projectRewardData);
         mProjectRewardAdapter.notifyDataSetChanged();
     }

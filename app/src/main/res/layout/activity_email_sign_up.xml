@@ -132,7 +132,8 @@
                 android:layout_marginTop="25dp"
                 android:background="@drawable/signup_edittext_style"
                 android:hint="이름"
-                android:imeOptions="actionNext" />
+                android:imeOptions="actionNext"
+                android:singleLine="true"/>
 
             <EditText
                 android:id="@+id/activity_sign_up_pw"
@@ -141,7 +142,8 @@
                 android:layout_marginTop="20dp"
                 android:background="@drawable/signup_edittext_style"
                 android:hint="비밀번호 입력"
-                android:imeOptions="actionNext"/>
+                android:imeOptions="actionNext"
+                android:singleLine="true"/>
 
             <EditText
                 android:id="@+id/activity_sign_up_re_pw"
@@ -150,7 +152,8 @@
                 android:layout_marginTop="10dp"
                 android:background="@drawable/signup_edittext_style"
                 android:hint="비밀번호 확인"
-                android:imeOptions="actionNext" />
+                android:imeOptions="actionNext"
+                android:singleLine="true"/>
 
             <TextView
                 android:layout_width="wrap_content"
